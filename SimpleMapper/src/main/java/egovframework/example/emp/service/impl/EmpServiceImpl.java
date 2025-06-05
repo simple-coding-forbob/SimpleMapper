@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import egovframework.example.common.Criteria;
-import egovframework.example.emp.service.EmpMapper;
 import egovframework.example.emp.service.EmpService;
 import egovframework.example.emp.service.EmpVO;
 

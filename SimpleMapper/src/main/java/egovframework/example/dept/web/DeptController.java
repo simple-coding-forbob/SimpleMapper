@@ -31,7 +31,7 @@ public class DeptController {
 	@Resource(name = "beanValidator")
 	protected DefaultBeanValidator beanValidator;
 	
-	@GetMapping("/basic/dept.do")
+	@GetMapping("/dept/dept.do")
 	public String selectDeptList(
 			@ModelAttribute("searchVO") Criteria searchVO,
 			Model model) throws Exception {
@@ -54,7 +54,7 @@ public class DeptController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 		
-		return "basic/dept/dept_all";
+		return "dept/dept_all";
 	}
 
 //	추가 페이지 열기 함수
