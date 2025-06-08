@@ -26,15 +26,49 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            그룹관리
+            부서
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="<c:url value='/dept/dept.do'/>">Dept</a></li>
-            <li><a class="dropdown-item" href="<c:url value='/emp/emp.do'/>">Emp(퀴즈)</a></li>
-            <li><a class="dropdown-item" href="<c:url value='/board/board.do'/>">Board(마무리퀴즈)</a></li>
+            <li><a class="dropdown-item" href="<c:url value='/dept/addition.do'/>">Add Dept</a></li>
           </ul>
         </li>
-
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            사원(퀴즈)
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="<c:url value='/emp/emp.do'/>">Emp</a></li>
+            <li><a class="dropdown-item" href="<c:url value='/emp/addition.do'/>">Add Emp</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Faq(마무리퀴즈)
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="<c:url value='/faq/faq.do'/>">Faq</a></li>
+            <li><a class="dropdown-item" href="<c:url value='/faq/addition.do'/>">Add Faq</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            fileDb
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="<c:url value='/fileDb/fileDb.do'/>">fileDb</a></li>
+            <li><a class="dropdown-item" href="<c:url value='/fileDb/addition.do'/>">Add fileDb</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            gallery
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="<c:url value='/gallery/gallery.do'/>">gallery</a></li>
+            <li><a class="dropdown-item" href="<c:url value='/gallery/addition.do'/>">Add gallery</a></li>
+          </ul>
+        </li>
       </ul>
 
     </div>

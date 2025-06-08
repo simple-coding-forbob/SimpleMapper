@@ -1,34 +1,51 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
 <html>
 <head>
 	<title>Dept</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" defer="defer">
 		function fn_egov_link_page(pageNo) {
-			document.listForm.pageIndex.value = pageNo; 
-			document.listForm.action = "<c:out value="/basic/dept.do" />";
-			document.listForm.submit();
+			$("#pageIndex").val(pageNo); 
+			$("#listForm").attr("action",'<c:out value="/dept/dept.do" />')
+						.submit();
 		}
 		function fn_egov_selectList() {
-			document.listForm.pageIndex.value = 1;
-			document.listForm.action = "<c:out value="/basic/dept.do" />";
-			document.listForm.submit();
+			$("#pageIndex").val(1); 
+			$("#listForm").attr("action",'<c:out value="/dept/dept.do" />')
+						.submit();
 		}
 		function fn_select(dno) {
-			document.listForm.dno.value = dno;
-			document.listForm.action = "<c:out value="/basic/dept/edition.do" />";
-			document.listForm.submit();
+			$("#dno").val(dno); 
+			$("#listForm").attr("action",'<c:out value="/dept/edition.do" />')
+						.submit();
 		}
+	</script>
+	<script src="/js/dept/dept-autocomplete.js" type="text/javascript"></script>
+	<script src="/js/jquery.twbsPagination.js" type="text/javascript"></script>		
+	<script type="text/javascript">
+	    $(function () {
+	        $('#pagination').twbsPagination({
+	            totalPages: "${paginationInfo.totalPageCount}",
+ 	            startPage: parseInt("${paginationInfo.currentPageNo}"), 
+	            visiblePages: "${paginationInfo.recordCountPerPage}",
+	        	initiateStartPageClick: false,
+	            onPageClick: function (event, page) {
+		        	fn_egov_link_page(page);
+	            }
+	        });
+	    });
 	</script>
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
-<div class="container">
+<div class="page mt3">
 	<form id="listForm" name="listForm" method="get">
-	    <input type="hidden" name="dno">
+	    <input type="hidden" id="dno" name="dno">
+	    <input type="hidden" id="pageIndex" name="pageIndex">
 	    
-		<div class="input-group mb-3 mt-3">
+		<div class="input-group mb3 mt3">
 		  <input type="text" 
 		         class="form-control" 
 		         id="searchKeyword"
@@ -42,7 +59,7 @@
 		          검색
 		  </button>
 		</div>
-	
+	    <div id="result"></div>
 		<table class="table">
 		  <thead>
 		    <tr>
@@ -67,10 +84,8 @@
 		  </tbody>
 		</table>
 	
-		<div id="paging" class="text-center">
-			<ui:pagination paginationInfo="${paginationInfo}" type="image"
-				jsFunction="fn_egov_link_page" />
-			<input type="hidden" id="pageIndex" name="pageIndex" />
+		<div id="paging" class="flex-center">
+		    <ul class="pagination" id="pagination"></ul>
 		</div>
 	</form>
 

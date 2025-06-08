@@ -25,76 +25,58 @@ public class EmpController {
 	@Autowired
 	private EmpService empService; 
 	
-	/** 유효성 체크 객체 */
-	@Resource(name = "beanValidator")
-	protected DefaultBeanValidator beanValidator;
-	
-	@GetMapping("/basic/emp.do")
-	public String selectEmpList(@ModelAttribute("searchVO") Criteria searchVO,
+	@GetMapping("/emp/emp.do")
+	public String selectEmpList(@ModelAttribute("searchVO") Criteria criteria,
 			Model model
 			) throws Exception {
-		searchVO.setPageUnit(3); 
-		searchVO.setPageSize(2); 
-		
 		PaginationInfo paginationInfo = new PaginationInfo();         
-		paginationInfo.setCurrentPageNo(searchVO.getPageIndex());     
-		paginationInfo.setRecordCountPerPage(searchVO.getPageUnit()); 
-		paginationInfo.setPageSize(searchVO.getPageSize());           
+		paginationInfo.setCurrentPageNo(criteria.getPageIndex());
+		paginationInfo.setRecordCountPerPage(criteria.getPageUnit());          
 		
-		searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());          
-		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());            
-		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage()); 
-		
-		List<?> emps = empService.selectEmpList(searchVO); 
+		criteria.setFirstIndex(paginationInfo.getFirstRecordIndex());          
+		List<?> emps = empService.selectEmpList(criteria); 
 		model.addAttribute("emps", emps);
 		
-		int totCnt = empService.selectEmpListTotCnt(searchVO);
+		int totCnt = empService.selectEmpListTotCnt(criteria);
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 		
-		return "basic/emp/emp_all";
+		return "emp/emp_all";
 	}
 	
-	@GetMapping("/basic/emp/addition.do")
+	@GetMapping("/emp/addition.do")
 	public String createEmpView(Model model) {
 		model.addAttribute("empVO", new EmpVO()); // 유효성 체크 모델
-		return "basic/emp/add_emp";
+		return "emp/add_emp";
 	}
 	
-	@PostMapping("/basic/emp/add.do")
-	public String insert(@ModelAttribute EmpVO empVO, BindingResult bindingResult) throws Exception {
-		
-		beanValidator.validate(empVO, bindingResult);
-		
-		if(bindingResult.hasErrors()) {
-			return "basic/emp/add_emp"; 
-		}
-		
+	@PostMapping("/emp/add.do")
+	public String insert(@ModelAttribute EmpVO empVO) throws Exception {
 		empService.insert(empVO);
 		
-		return "redirect:/basic/emp.do"; 
+		return "redirect:/emp/emp.do"; 
 	}
 	
 
-	@GetMapping("/basic/emp/edition.do")
+	@GetMapping("/emp/edition.do")
 	public String updateEmpView(@RequestParam int eno, Model model) throws Exception {
 		EmpVO empVO = empService.selectEmp(eno);
 		model.addAttribute("empVO", empVO);
-		return "basic/emp/update_emp";
+		return "emp/update_emp";
 	}
 	
-	@PostMapping("/basic/emp/edit.do")
+	@PostMapping("/emp/edit.do")
 	public String update(@RequestParam int eno,
 							@ModelAttribute EmpVO empVO
 			) throws Exception {
 		empService.update(empVO);
-		return "redirect:/basic/emp.do"; 
+		return "redirect:/emp/emp.do"; 
 	}
 	
-	@PostMapping("/basic/emp/delete.do")
+	@PostMapping("/emp/delete.do")
 	public String delete(@ModelAttribute EmpVO empVO) throws Exception {
         empService.delete(empVO);
-		return "redirect:/basic/emp.do"; 
+		return "redirect:/emp/emp.do"; 
 	}
 }
 

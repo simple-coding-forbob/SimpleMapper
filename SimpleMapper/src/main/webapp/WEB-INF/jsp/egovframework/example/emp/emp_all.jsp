@@ -1,32 +1,50 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
 <html>
 <head>
 	<title>Home</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" defer="defer">
 		function fn_egov_link_page(pageNo) {
-			document.listForm.pageIndex.value = pageNo; 
-			document.listForm.action = "<c:out value="/basic/emp.do" />";
-			document.listForm.submit();
+			$("#pageIndex").val(pageNo); 
+			$("#listForm").attr("action",'<c:out value="/emp/emp.do" />')
+						.submit();
 		}
 		function fn_egov_selectList() {
-			document.listForm.pageIndex.value = 1;
-			document.listForm.action = "<c:out value="/basic/emp.do" />";
-			document.listForm.submit();
+			$("#pageIndex").val(1); 
+			$("#listForm").attr("action",'<c:out value="/emp/emp.do" />')
+						.submit();
 		}
 		function fn_select(eno) {
-			document.listForm.eno.value = eno;
-			document.listForm.action = "<c:out value="/basic/emp/edition.do" />";
-			document.listForm.submit();
+			$("#eno").val(eno); 
+			$("#listForm").attr("action",'<c:out value="/emp/edition.do" />')
+						.submit();
 		}
+	</script>
+	<script src="/js/emp/emp-autocomplete.js" type="text/javascript"></script>
+	<script src="/js/jquery.twbsPagination.js" type="text/javascript"></script>	
+	<script type="text/javascript">
+	    $(function () {
+	        $('#pagination').twbsPagination({
+	            totalPages: "${paginationInfo.totalPageCount}",
+ 	            startPage: parseInt("${paginationInfo.currentPageNo}"), 
+	            visiblePages: "${paginationInfo.recordCountPerPage}",
+	        	initiateStartPageClick: false,
+	            onPageClick: function (event, page) {
+		        	fn_egov_link_page(page);
+	            }
+	        });
+	    });
 	</script>
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
 <div class="container">
 		<form id="listForm" name="listForm" method="get">
-		<input type="hidden" name="eno">
+		<input type="hidden" id="eno" name="eno">
+		<input type="hidden" id="pageIndex" name="pageIndex">
+		
 		<div class="input-group mb-3 mt-3">
 		  <input type="text" 
 		         class="form-control" 
@@ -41,7 +59,7 @@
 		          검색
 		  </button>
 		</div>
-	
+	    <div id="result"></div>
 		<table class="table">
 		  <thead>
 		    <tr>
@@ -76,10 +94,8 @@
 		  </tbody>
 		</table>
 		
-		<div id="paging" class="text-center">
-			<ui:pagination paginationInfo="${paginationInfo}" type="image"
-				jsFunction="fn_egov_link_page" />
-			<input type="hidden" id="pageIndex" name="pageIndex" />
+		<div id="paging" class="flex-center">
+		    <ul class="pagination" id="pagination"></ul>
 		</div>
 	</form>
 	

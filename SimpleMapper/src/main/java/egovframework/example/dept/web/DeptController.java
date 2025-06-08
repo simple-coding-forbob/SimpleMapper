@@ -27,79 +27,65 @@ public class DeptController {
 	@Autowired
 	private DeptService deptService;
 	
-	/** 유효성 체크 객체 */
-	@Resource(name = "beanValidator")
-	protected DefaultBeanValidator beanValidator;
-	
 	@GetMapping("/dept/dept.do")
 	public String selectDeptList(
-			@ModelAttribute("searchVO") Criteria searchVO,
+			@ModelAttribute("searchVO") Criteria criteria,
 			Model model) throws Exception {
-		searchVO.setPageUnit(3); 
-		searchVO.setPageSize(2); 
+//		１） PaginationInfo: 전체 페이지수, offset 자동계산해 주는 클래스(쿼리에 필요함)
+//		 => 자동계산을 위한 정보: 1) 현재페이지번호, 화면에 보여줄 개수
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(criteria.getPageIndex());     // 현재페이지번호
+		paginationInfo.setRecordCountPerPage(criteria.getPageUnit()); // 화면에 보여줄 개수         
 		
-		PaginationInfo paginationInfo = new PaginationInfo();         
-		paginationInfo.setCurrentPageNo(searchVO.getPageIndex());     
-		paginationInfo.setRecordCountPerPage(searchVO.getPageUnit()); 
-		paginationInfo.setPageSize(searchVO.getPageSize());           
+		criteria.setFirstIndex(paginationInfo.getFirstRecordIndex()); // offset 자동 계산값 넣기
 		
-		searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());           
-		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());             
-		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage()); 
-		
-		List<?> depts = deptService.selectDeptList(searchVO);
+		List<?> depts = deptService.selectDeptList(criteria);
 		model.addAttribute("depts", depts);
+		int totCnt = deptService.selectDeptListTotCnt(criteria);
+		paginationInfo.setTotalRecordCount(totCnt);                   // 전체 행 개수
 		
-		int totCnt = deptService.selectDeptListTotCnt(searchVO);
-		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 		
 		return "dept/dept_all";
 	}
 
 //	추가 페이지 열기 함수
-	@GetMapping("/basic/dept/addition.do")
+	@GetMapping("/dept/addition.do")
 	public String createDeptView(Model model) {
 		model.addAttribute("deptVO", new DeptVO()); // 유효성 체크 모델
-		return "basic/dept/add_dept";
+		return "dept/add_dept";
 	}
 
-	@PostMapping("/basic/dept/add.do")
-	public String insert(@ModelAttribute DeptVO deptVO, BindingResult bindingResult) throws Exception {
-		
-		beanValidator.validate(deptVO, bindingResult);
-		
-		if(bindingResult.hasErrors()) {
-			return "basic/dept/add_dept";
-		}
+	@PostMapping("/dept/add.do")
+	public String insert(@ModelAttribute DeptVO deptVO) throws Exception {
 		
 		log.info("테스트 " + deptVO);
 		deptService.insert(deptVO);
 		
-		return "redirect:/basic/dept.do";
+		return "redirect:/dept/dept.do";
 	}
 	
-	@GetMapping("/basic/dept/edition.do")
+	@GetMapping("/dept/edition.do")
 	public String updateDeptView(@RequestParam int dno, Model model) 
 			      throws Exception {
 		DeptVO deptVO = deptService.selectDept(dno);
 		model.addAttribute("deptVO", deptVO);
-		return "basic/dept/update_dept";
+		return "dept/update_dept";
 	}
 	
-	@PostMapping("/basic/dept/edit.do")
+	@PostMapping("/dept/edit.do")
 	public String update(@RequestParam int dno,
 							@ModelAttribute DeptVO deptVO
 			) throws Exception {
 		deptService.update(deptVO);
-		return "redirect:/basic/dept.do"; 
+		return "redirect:/dept/dept.do"; 
 	}
 	
-	@PostMapping("/basic/dept/delete.do")
+	@PostMapping("/dept/delete.do")
 	public String delete(@ModelAttribute DeptVO deptVO) throws Exception
 	{
         deptService.delete(deptVO);
-		return "redirect:/basic/dept.do"; 
+		return "redirect:/dept/dept.do"; 
 	}
 }
 

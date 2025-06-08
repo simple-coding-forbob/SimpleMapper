@@ -71,16 +71,26 @@ a {text-decoration: none;color: var(--black);}
 
 /* 글자 중앙정렬 */
 .tcenter{text-align: center !important;}
+/* 박스 중앙정렬 */
+.flex-center{display:flex !important; justify-content: center !important;}
+/* float 해제 */
+.clear {clear: both;}
 
-.page {width: 99vw; margin: 0 auto}
+.page {width: 99vw !important; margin: 0 auto !important;}
+/* 박스 3개 배치: 핸드폰(1개) */
+.col2,.col3 {width: 99% !important; padding:1% !important; display:inline-block !important;}
 
 /* TODO: 태블릿 */
 @media screen and (min-width: 768px){
-    .page {width: 90vw;}
+    .page {width: 90vw !important;}
+    /* 박스 2개 배치 */
+ 	.col2 {width:49% !important;}
+    /* 박스 3개 배치 */
+ 	.col3 {width:32% !important;}
 }
 /* TODO: pc */
 @media screen and (min-width: 1024px){
-    .page {width: 60vw;}
+    .page {width: 60vw !important;}
 }
 
 

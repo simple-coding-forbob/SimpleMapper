@@ -15,7 +15,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@SuppressWarnings("serial")
 public class DeptVO extends Criteria {
 	private int dno;           // 부서번호(기본키)
 	private String dname;      // 부서명

@@ -8,7 +8,7 @@
 		SELECT * FROM TB_DEPT
 		WHERE DNAME LIKE '%'|| #{searchKeyword} ||'%'
 		OFFSET #{firstIndex} ROWS
-		FETCH NEXT #{recordCountPerPage} ROWS ONLY
+		FETCH NEXT #{pageUnit} ROWS ONLY
 	</select>	
 	
 	<select id="selectDeptListTotCnt"

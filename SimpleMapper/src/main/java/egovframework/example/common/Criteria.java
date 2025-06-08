@@ -6,6 +6,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * @author : GGG
@@ -14,15 +15,12 @@ import lombok.Setter;
  *      공통 클래스 
  *      페이징처리 목적
  *      전자정부 프레임워크에서 가져옴
+ *      일부 수정
  */
 @Getter
 @Setter
-public class Criteria implements Serializable {
-	/**
-	 * serialVersion UID, 안하면 @SuppressWarnings("serial") 사용해야함
-	 */
-	private static final long serialVersionUID = -858838578081269359L;
-
+@ToString
+public class Criteria {
 	/** 검색조건 */
 	private String searchCondition = "";
 
@@ -35,28 +33,13 @@ public class Criteria implements Serializable {
 	/** 현재페이지 */
 	private int pageIndex = 1;
 
-	/** 페이지갯수 */
-	private int pageUnit = 10;
-
-	/** 페이지사이즈 */
-	private int pageSize = 10;
+	/** 페이지갯수: 화면에 보일 행 개수 */
+	private int pageUnit = 3;
 
 	/** firstIndex */
 	private int firstIndex = 1;
 
-	/** lastIndex */
-	private int lastIndex = 1;
-
-	/** recordCountPerPage : 1페이지당 화면에 보일 개수 */
-	private int recordCountPerPage = 10;
-
 	private String insertTime;
 
 	private String updateTime;
-
-	@Override
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-
 }

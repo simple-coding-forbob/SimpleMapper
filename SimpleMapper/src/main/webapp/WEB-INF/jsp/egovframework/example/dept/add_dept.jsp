@@ -5,39 +5,41 @@
 <html>
 <head>
     <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.21.0/dist/jquery.validate.min.js"></script>
+    <script src="/js/dept/dept-validation-config.js"></script>
     <script type="text/javascript" defer="defer">
-		function fn_save() {
-            document.addForm.action = "<c:out value="/basic/dept/add.do" />";
-            document.addForm.submit();
+		function fn_save() {        
+			$("#addForm").attr("action",'<c:out value="/dept/add.do" />')
+						.submit();
 		}
     </script>
 </head>
 <body>
 <jsp:include page="/common/header.jsp"/>
-<div class="container">
-	<form:form modelAttribute="deptVO" id="addForm" name="addForm" method="post">
-        <div class="mb-3">
+<div class="page mt3">
+	<form id="addForm" name="addForm" method="post">
+        <div class="mb3">
             <label for="dname" class="form-label">dname</label>
             <input  
             		class="form-control"
             		id="dname"
             		name="dname"
             		placeholder="dname" />
-             &nbsp;<form:errors path="dname" />
         </div>
-        <div class="mb-3">
+        <div class="mb3">
             <label for="loc" class="form-label">loc</label>
             <input 
                    class="form-control"
                    id="loc"
                    name="loc"
                    placeholder="loc" />
-             &nbsp;<form:errors path="loc" />
         </div>
-        <div class="mb-3">
+        <div class="mb3">
             <button class="btn btn-primary" onclick="fn_save()">저장</button>
         </div>
-    </form:form>
+    </form>
 </div>
 <jsp:include page="/common/footer.jsp"/>
 </body>

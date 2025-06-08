@@ -22,7 +22,7 @@ public class CommonExceptionAdvice {
 //  컨트롤러에서 어떤 에러가 발생하더라도 이 함수가 실행됨
     @ExceptionHandler(Exception.class)
     public void  internalServerErrorException(Exception e) {
-        String errors = "에러 : " + e.getMessage();
+        String errors = "에러 : " + e.toString();
         log.info(errors);
     }
 }
