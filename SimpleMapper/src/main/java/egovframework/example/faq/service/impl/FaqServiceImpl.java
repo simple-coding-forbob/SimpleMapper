@@ -19,7 +19,7 @@ public class FaqServiceImpl implements FaqService {
 	private FaqMapper faqMapper;
 
 	@Override
-	public List<?> selectFaqList(Criteria criteria) throws Exception {
+	public List<?> selectFaqList(Criteria criteria) {
 		return faqMapper.selectFaqList(criteria);
 	}
 	
@@ -29,23 +29,23 @@ public class FaqServiceImpl implements FaqService {
 	}
 	
 	@Override
-	public void insert(FaqVO faqVO) throws Exception {
+	public void insert(FaqVO faqVO) {
 		faqMapper.insert(faqVO);
 	}
 	
 	@Override
-	public FaqVO selectFaq(int fno) throws Exception {
+	public FaqVO selectFaq(int fno) {
 		FaqVO faqVO = faqMapper.selectFaq(fno);
 		return faqVO;
 	}
 
 	@Override
-	public void update(FaqVO faqVO) throws Exception {
+	public void update(FaqVO faqVO) {
 		faqMapper.update(faqVO);
 	}
 
 	@Override
-	public void delete(FaqVO faqVO) throws Exception {
+	public void delete(FaqVO faqVO) {
 		faqMapper.delete(faqVO);
 	}
 }

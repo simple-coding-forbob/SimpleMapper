@@ -31,7 +31,7 @@ public class GalleryController {
 	GalleryService galleryService; 
 
 	@GetMapping("/gallery/gallery.do")
-	public String selectGalleryList(@ModelAttribute("searchVO") Criteria criteria, Model model) throws Exception {
+	public String selectGalleryList(@ModelAttribute Criteria criteria, Model model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo(); 
 		paginationInfo.setCurrentPageNo(criteria.getPageIndex()); 
@@ -65,7 +65,7 @@ public class GalleryController {
 	
 	@GetMapping("/gallery/download.do")
 	@ResponseBody
-	public ResponseEntity<byte[]> findDownload(@RequestParam(defaultValue = "") String uuid) throws Exception {
+	public ResponseEntity<byte[]> findDownload(@RequestParam(defaultValue = "") String uuid) {
 		GalleryVO galleryVO = galleryService.selectGallery(uuid);
 		
         HttpHeaders headers = new HttpHeaders();             
@@ -76,7 +76,7 @@ public class GalleryController {
 	}
 	
 	@PostMapping("/gallery/delete.do")
-	public String delete(@RequestParam(defaultValue = "") String uuid) throws Exception {
+	public String delete(@RequestParam(defaultValue = "") String uuid) {
 		galleryService.delete(uuid);
 		return "redirect:/gallery/gallery.do";
 	}

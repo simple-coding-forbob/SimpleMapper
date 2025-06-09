@@ -25,8 +25,8 @@ public class FaqController {
 	
 	@GetMapping("/faq/faq.do")
 	public String selectFaqList(
-			@ModelAttribute("searchVO") Criteria criteria,
-			Model model) throws Exception {
+			@ModelAttribute Criteria criteria,
+			Model model) {
 //		１） PaginationInfo: 전체 페이지수, offset 자동계산해 주는 클래스(쿼리에 필요함)
 //		 => 자동계산을 위한 정보: 1) 현재페이지번호, 화면에 보여줄 개수
 		PaginationInfo paginationInfo = new PaginationInfo();
@@ -53,7 +53,7 @@ public class FaqController {
 	}
 
 	@PostMapping("/faq/add.do")
-	public String insert(@ModelAttribute FaqVO faqVO) throws Exception {
+	public String insert(@ModelAttribute FaqVO faqVO) {
 		
 		log.info("테스트 " + faqVO);
 		faqService.insert(faqVO);
@@ -63,7 +63,7 @@ public class FaqController {
 	
 	@GetMapping("/faq/edition.do")
 	public String updateFaqView(@RequestParam int fno, Model model) 
-			      throws Exception {
+			      {
 		FaqVO faqVO = faqService.selectFaq(fno);
 		model.addAttribute("faqVO", faqVO);
 		return "faq/update_faq";
@@ -72,13 +72,13 @@ public class FaqController {
 	@PostMapping("/faq/edit.do")
 	public String update(@RequestParam int fno,
 							@ModelAttribute FaqVO faqVO
-			) throws Exception {
+			) {
 		faqService.update(faqVO);
 		return "redirect:/faq/faq.do"; 
 	}
 	
 	@PostMapping("/faq/delete.do")
-	public String delete(@ModelAttribute FaqVO faqVO) throws Exception
+	public String delete(@ModelAttribute FaqVO faqVO)
 	{
         faqService.delete(faqVO);
 		return "redirect:/faq/faq.do"; 

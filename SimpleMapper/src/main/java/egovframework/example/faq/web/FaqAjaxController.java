@@ -26,7 +26,7 @@ public class FaqAjaxController {
 	private FaqService faqService;
 
 	@GetMapping("/api/faq/faq.do")
-	public List<?> selectFaqList(@ModelAttribute("searchVO") Criteria criteria) throws Exception {
+	public List<?> selectFaqList(@ModelAttribute Criteria criteria) {
 		criteria.setFirstIndex(0); // 첫페이지만
 		List<?> list = faqService.selectFaqList(criteria);
 		

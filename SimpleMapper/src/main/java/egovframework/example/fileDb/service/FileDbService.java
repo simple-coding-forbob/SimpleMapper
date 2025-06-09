@@ -8,11 +8,11 @@ import java.util.List;
 import egovframework.example.common.Criteria;
 
 public interface FileDbService {
-	List<?> selectFileDbList(Criteria searchVO) throws Exception; 
+	List<?> selectFileDbList(Criteria searchVO); 
 	int selectFileDbListTotCnt(Criteria searchVO);                
-	void insert(FileDbVO fileDbVO) throws Exception;        
-	FileDbVO selectFileDb(String uuid) throws Exception;          
-	void delete(String uuid) throws Exception;              
+	void insert(FileDbVO fileDbVO);        
+	FileDbVO selectFileDb(String uuid);          
+	void delete(String uuid);              
 }
 
 

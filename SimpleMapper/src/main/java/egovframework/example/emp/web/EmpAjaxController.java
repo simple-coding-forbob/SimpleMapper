@@ -28,7 +28,7 @@ public class EmpAjaxController {
 	private EmpService empService;
 
 	@GetMapping("/api/emp/emp.do")
-	public List<?> selectEmpList(@ModelAttribute("searchVO") Criteria criteria) throws Exception  {
+	public List<?> selectEmpList(@ModelAttribute Criteria criteria)  {
 		criteria.setFirstIndex(0); // 첫페이지만
 		List<?> list = empService.selectEmpList(criteria);
 		

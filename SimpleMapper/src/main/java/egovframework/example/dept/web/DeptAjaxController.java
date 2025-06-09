@@ -26,7 +26,7 @@ public class DeptAjaxController {
 	private DeptService deptService;
 
 	@GetMapping("/api/dept/dept.do")
-	public List<?> selectDeptList(@ModelAttribute("searchVO") Criteria criteria) throws Exception {        
+	public List<?> selectDeptList(@ModelAttribute Criteria criteria) {        
 		
 		criteria.setFirstIndex(0); // 첫페이지만
 		List<?> list = deptService.selectDeptList(criteria);

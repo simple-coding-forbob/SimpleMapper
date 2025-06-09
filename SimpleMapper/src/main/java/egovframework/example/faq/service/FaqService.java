@@ -8,12 +8,12 @@ import java.util.List;
 import egovframework.example.common.Criteria;
 
 public interface FaqService {
-	List<?> selectFaqList(Criteria criteria) throws Exception;
+	List<?> selectFaqList(Criteria criteria);
 	int selectFaqListTotCnt(Criteria criteria);     
-	void insert(FaqVO faqVO) throws Exception; 
-	FaqVO selectFaq(int fno) throws Exception;     
-	void update(FaqVO faqVO) throws Exception; 
-	void delete(FaqVO faqVO) throws Exception;
+	void insert(FaqVO faqVO); 
+	FaqVO selectFaq(int fno);     
+	void update(FaqVO faqVO); 
+	void delete(FaqVO faqVO);
 }
 
 

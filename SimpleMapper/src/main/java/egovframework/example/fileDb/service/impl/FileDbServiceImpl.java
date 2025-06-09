@@ -18,7 +18,7 @@ public class FileDbServiceImpl implements FileDbService {
 	FileDbMapper fileDbMapper;
 
 	@Override
-	public List<?> selectFileDbList(Criteria searchVO) throws Exception {
+	public List<?> selectFileDbList(Criteria searchVO) {
 		return fileDbMapper.selectFileDbList(searchVO);
 	}
 	
@@ -28,7 +28,7 @@ public class FileDbServiceImpl implements FileDbService {
 	}
 	
 	@Override
-	public void insert(FileDbVO fileDbVO) throws Exception {
+	public void insert(FileDbVO fileDbVO) {
 		    String newUuid = UUID.randomUUID().toString(); 
 		    String fileDownloadURL = generateDownloadUrl(newUuid);
 		    fileDbVO.setUuid(newUuid);
@@ -46,13 +46,13 @@ public class FileDbServiceImpl implements FileDbService {
 	}
 	
 	@Override
-	public FileDbVO selectFileDb(String uuid) throws Exception {
+	public FileDbVO selectFileDb(String uuid) {
 		FileDbVO fileDbVO = fileDbMapper.selectFileDb(uuid);
 		return fileDbVO;
 	}
 	
 	@Override
-	public void delete(String uuid) throws Exception {
+	public void delete(String uuid) {
 		fileDbMapper.delete(uuid);
 	}
 }

@@ -42,6 +42,7 @@
 	<jsp:include page="/common/header.jsp" />
 	<form class="page mt3" id="listForm" name="listForm" method="get">
 		<input type="hidden" id="uuid" name="uuid" >
+		<input type="hidden" id="pageIndex" name="pageIndex">
 		<div class="input-group mb-3 mt-3">
 			<input type="text" class="form-control" 
 			    id="searchKeyword"

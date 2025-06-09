@@ -8,12 +8,12 @@ import java.util.List;
 import egovframework.example.common.Criteria;
 
 public interface DeptService {
-	List<?> selectDeptList(Criteria searchVO) throws Exception;
-	int selectDeptListTotCnt(Criteria searchVO);     
-	void insert(DeptVO deptVO) throws Exception; 
-	DeptVO selectDept(int dno) throws Exception;     
-	void update(DeptVO deptVO) throws Exception; 
-	void delete(DeptVO deptVO) throws Exception; 
+	List<?> selectDeptList(Criteria searchVO);
+	int selectDeptListTotCnt(Criteria searchVO);
+	void insert(DeptVO deptVO);
+	DeptVO selectDept(int dno);
+	void update(DeptVO deptVO);
+	void delete(DeptVO deptVO);
 }
 
 

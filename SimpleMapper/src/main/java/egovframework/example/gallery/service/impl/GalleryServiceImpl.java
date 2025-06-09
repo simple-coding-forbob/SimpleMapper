@@ -21,7 +21,7 @@ public class GalleryServiceImpl implements GalleryService {
 	GalleryMapper galleryMapper;
 
 	@Override
-	public List<?> selectGalleryList(Criteria searchVO) throws Exception {
+	public List<?> selectGalleryList(Criteria searchVO) {
 		return galleryMapper.selectGalleryList(searchVO);
 	}
 	
@@ -31,7 +31,7 @@ public class GalleryServiceImpl implements GalleryService {
 	}
 	
 	@Override
-	public void insert(GalleryVO galleryVO) throws Exception {
+	public void insert(GalleryVO galleryVO) {
 		    String newUuid = UUID.randomUUID().toString(); 
 		    String fileDownloadURL = generateDownloadUrl(newUuid);
 		    galleryVO.setUuid(newUuid);
@@ -49,13 +49,13 @@ public class GalleryServiceImpl implements GalleryService {
 	}
 	
 	@Override
-	public GalleryVO selectGallery(String uuid) throws Exception {
+	public GalleryVO selectGallery(String uuid) {
 		GalleryVO galleryVO = galleryMapper.selectGallery(uuid);
 		return galleryVO;
 	}
 	
 	@Override
-	public void delete(String uuid) throws Exception {
+	public void delete(String uuid) {
 		galleryMapper.delete(uuid);
 	}
 }

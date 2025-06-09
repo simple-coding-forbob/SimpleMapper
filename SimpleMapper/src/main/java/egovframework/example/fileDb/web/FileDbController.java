@@ -33,7 +33,7 @@ public class FileDbController {
 	FileDbService fileDbService;
 
 	@GetMapping("/fileDb/fileDb.do")
-	public String selectFileDbList(@ModelAttribute("searchVO") Criteria criteria, Model model) throws Exception {
+	public String selectFileDbList(@ModelAttribute Criteria criteria, Model model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();         
 		paginationInfo.setCurrentPageNo(criteria.getPageIndex());     
@@ -69,7 +69,7 @@ public class FileDbController {
 	
 	@GetMapping("/fileDb/download.do")
 	@ResponseBody
-	public ResponseEntity<byte[]> findDownload(@RequestParam(defaultValue = "") String uuid) throws Exception {
+	public ResponseEntity<byte[]> findDownload(@RequestParam(defaultValue = "") String uuid) {
 		FileDbVO fileDbVO = fileDbService.selectFileDb(uuid);
 		
         HttpHeaders headers = new HttpHeaders();             
@@ -80,7 +80,7 @@ public class FileDbController {
 	}
 	
 	@PostMapping("/fileDb/delete.do")
-	public String delete(@RequestParam(defaultValue = "") String uuid) throws Exception {
+	public String delete(@RequestParam(defaultValue = "") String uuid) {
 		log.info("테스트 : " + uuid);
 		fileDbService.delete(uuid);
 		return "redirect:/fileDb/fileDb.do"; 

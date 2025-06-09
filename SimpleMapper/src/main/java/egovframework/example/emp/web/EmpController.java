@@ -26,9 +26,9 @@ public class EmpController {
 	private EmpService empService; 
 	
 	@GetMapping("/emp/emp.do")
-	public String selectEmpList(@ModelAttribute("searchVO") Criteria criteria,
+	public String selectEmpList(@ModelAttribute Criteria criteria,
 			Model model
-			) throws Exception {
+			) {
 		PaginationInfo paginationInfo = new PaginationInfo();         
 		paginationInfo.setCurrentPageNo(criteria.getPageIndex());
 		paginationInfo.setRecordCountPerPage(criteria.getPageUnit());          
@@ -51,7 +51,7 @@ public class EmpController {
 	}
 	
 	@PostMapping("/emp/add.do")
-	public String insert(@ModelAttribute EmpVO empVO) throws Exception {
+	public String insert(@ModelAttribute EmpVO empVO) {
 		empService.insert(empVO);
 		
 		return "redirect:/emp/emp.do"; 
@@ -59,7 +59,7 @@ public class EmpController {
 	
 
 	@GetMapping("/emp/edition.do")
-	public String updateEmpView(@RequestParam int eno, Model model) throws Exception {
+	public String updateEmpView(@RequestParam int eno, Model model) {
 		EmpVO empVO = empService.selectEmp(eno);
 		model.addAttribute("empVO", empVO);
 		return "emp/update_emp";
@@ -68,13 +68,13 @@ public class EmpController {
 	@PostMapping("/emp/edit.do")
 	public String update(@RequestParam int eno,
 							@ModelAttribute EmpVO empVO
-			) throws Exception {
+			) {
 		empService.update(empVO);
 		return "redirect:/emp/emp.do"; 
 	}
 	
 	@PostMapping("/emp/delete.do")
-	public String delete(@ModelAttribute EmpVO empVO) throws Exception {
+	public String delete(@ModelAttribute EmpVO empVO) {
         empService.delete(empVO);
 		return "redirect:/emp/emp.do"; 
 	}

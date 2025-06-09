@@ -29,8 +29,8 @@ public class DeptController {
 	
 	@GetMapping("/dept/dept.do")
 	public String selectDeptList(
-			@ModelAttribute("searchVO") Criteria criteria,
-			Model model) throws Exception {
+			@ModelAttribute Criteria criteria,
+			Model model)  {
 //		１） PaginationInfo: 전체 페이지수, offset 자동계산해 주는 클래스(쿼리에 필요함)
 //		 => 자동계산을 위한 정보: 1) 현재페이지번호, 화면에 보여줄 개수
 		PaginationInfo paginationInfo = new PaginationInfo();
@@ -57,7 +57,7 @@ public class DeptController {
 	}
 
 	@PostMapping("/dept/add.do")
-	public String insert(@ModelAttribute DeptVO deptVO) throws Exception {
+	public String insert(@ModelAttribute DeptVO deptVO)  {
 		
 		log.info("테스트 " + deptVO);
 		deptService.insert(deptVO);
@@ -67,7 +67,7 @@ public class DeptController {
 	
 	@GetMapping("/dept/edition.do")
 	public String updateDeptView(@RequestParam int dno, Model model) 
-			      throws Exception {
+			       {
 		DeptVO deptVO = deptService.selectDept(dno);
 		model.addAttribute("deptVO", deptVO);
 		return "dept/update_dept";
@@ -76,13 +76,13 @@ public class DeptController {
 	@PostMapping("/dept/edit.do")
 	public String update(@RequestParam int dno,
 							@ModelAttribute DeptVO deptVO
-			) throws Exception {
+			)  {
 		deptService.update(deptVO);
 		return "redirect:/dept/dept.do"; 
 	}
 	
 	@PostMapping("/dept/delete.do")
-	public String delete(@ModelAttribute DeptVO deptVO) throws Exception
+	public String delete(@ModelAttribute DeptVO deptVO) 
 	{
         deptService.delete(deptVO);
 		return "redirect:/dept/dept.do"; 
