@@ -9,8 +9,8 @@ import egovframework.example.gallery.service.GalleryVO;
 
 @Mapper
 public interface GalleryMapper {
-	public List<?> selectGalleryList(Criteria searchVO);   
-	public int selectGalleryListTotCnt(Criteria searchVO); 
+	public List<?> selectGalleryList(Criteria criteria);   
+	public int selectGalleryListTotCnt(Criteria criteria); 
 	public int insert(GalleryVO galleryVO);                 
 	public GalleryVO selectGallery(String  uuid);          
 	public int delete(String uuid);                       

@@ -19,13 +19,13 @@ public class DeptServiceImpl implements DeptService {
 	private DeptMapper deptMapper;
 
 	@Override
-	public List<?> selectDeptList(Criteria searchVO)  {
-		return deptMapper.selectDeptList(searchVO);
+	public List<?> selectDeptList(Criteria criteria)  {
+		return deptMapper.selectDeptList(criteria);
 	}
 	
 	@Override
-	public int selectDeptListTotCnt(Criteria searchVO) {
-		return deptMapper.selectDeptListTotCnt(searchVO);
+	public int selectDeptListTotCnt(Criteria criteria) {
+		return deptMapper.selectDeptListTotCnt(criteria);
 	}
 	
 	@Override

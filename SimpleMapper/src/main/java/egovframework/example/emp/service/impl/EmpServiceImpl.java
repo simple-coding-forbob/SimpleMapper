@@ -19,13 +19,13 @@ public class EmpServiceImpl implements EmpService{
 	EmpMapper empMapper; 
 	
 	@Override
-	public List<?> selectEmpList(Criteria searchVO) {
-		return empMapper.selectEmpList(searchVO);
+	public List<?> selectEmpList(Criteria criteria) {
+		return empMapper.selectEmpList(criteria);
 	}
 
 	@Override
-	public int selectEmpListTotCnt(Criteria searchVO) {
-		return empMapper.selectEmpListTotCnt(searchVO);
+	public int selectEmpListTotCnt(Criteria criteria) {
+		return empMapper.selectEmpListTotCnt(criteria);
 	}
 	
 	@Override

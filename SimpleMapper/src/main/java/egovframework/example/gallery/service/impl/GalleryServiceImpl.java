@@ -21,13 +21,13 @@ public class GalleryServiceImpl implements GalleryService {
 	GalleryMapper galleryMapper;
 
 	@Override
-	public List<?> selectGalleryList(Criteria searchVO) {
-		return galleryMapper.selectGalleryList(searchVO);
+	public List<?> selectGalleryList(Criteria criteria) {
+		return galleryMapper.selectGalleryList(criteria);
 	}
 	
 	@Override
-	public int selectGalleryListTotCnt(Criteria searchVO) {
-		return galleryMapper.selectGalleryListTotCnt(searchVO);
+	public int selectGalleryListTotCnt(Criteria criteria) {
+		return galleryMapper.selectGalleryListTotCnt(criteria);
 	}
 	
 	@Override
