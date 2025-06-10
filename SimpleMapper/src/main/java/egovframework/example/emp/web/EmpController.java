@@ -45,8 +45,7 @@ public class EmpController {
 	}
 	
 	@GetMapping("/emp/addition.do")
-	public String createEmpView(Model model) {
-		model.addAttribute("empVO", new EmpVO()); // 유효성 체크 모델
+	public String createEmpView() {
 		return "emp/add_emp";
 	}
 	

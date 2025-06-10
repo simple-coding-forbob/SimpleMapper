@@ -47,8 +47,7 @@ public class FaqController {
 
 //	추가 페이지 열기 함수
 	@GetMapping("/faq/addition.do")
-	public String createFaqView(Model model) {
-		model.addAttribute("faqVO", new FaqVO()); // 유효성 체크 모델
+	public String createFaqView() {
 		return "faq/add_faq";
 	}
 
