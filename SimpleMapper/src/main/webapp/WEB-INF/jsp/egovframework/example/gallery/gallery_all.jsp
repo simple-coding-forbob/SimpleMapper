@@ -43,7 +43,7 @@
 	<form class="page mt3" id="listForm" name="listForm" method="get">
 		<input type="hidden" id="uuid" name="uuid" >
 		<input type="hidden" id="pageIndex" name="pageIndex">
-		<div class="input-group mb-3 mt-3">
+		<div class="input-group mb3 mt3">
 			<input type="text" class="form-control" 
 			    id="searchKeyword"
 				name="searchKeyword" 
@@ -57,7 +57,7 @@
 
         <c:forEach var="data" items="${gallerys}">
 		   <div class="col3">
-				<div class="card" style="width: 18rem;">
+				<div class="card">
 					<img src="<c:out value="${data.galleryFileUrl}" />" class="card-img-top"
 						alt="이미지">
 					<div class="card-body">
