@@ -5,7 +5,8 @@
 <head>
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <jsp:include page="/common/link.jsp"></jsp:include>
+    <script src="/js/faq/faq-validation-config.js"></script>
     <script type="text/javascript" defer="defer">
     	function fn_save() {
  			$("#addForm").attr("action",'<c:out value="/faq/edit.do" />')
@@ -16,8 +17,7 @@
 							.submit();
 		}
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.21.0/dist/jquery.validate.min.js"></script>
-    <script src="/js/faq/faq-validation-config.js"></script>
+    
 </head>
 <body>
 <jsp:include page="/common/header.jsp"/>

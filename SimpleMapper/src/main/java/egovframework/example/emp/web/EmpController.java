@@ -2,18 +2,14 @@ package egovframework.example.emp.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import egovframework.example.common.Criteria;
 import egovframework.example.emp.service.EmpService;
@@ -26,7 +22,7 @@ public class EmpController {
 	private EmpService empService; 
 	
 	@GetMapping("/emp/emp.do")
-	public String selectEmpList(@ModelAttribute Criteria criteria,
+	public String selectEmpList(@ModelAttribute("searchVO") Criteria criteria,
 			Model model
 			) {
 		PaginationInfo paginationInfo = new PaginationInfo();         
@@ -45,7 +41,8 @@ public class EmpController {
 	}
 	
 	@GetMapping("/emp/addition.do")
-	public String createEmpView() {
+	public String createEmpView(Model model) {
+		model.addAttribute("empVO", new EmpVO()); // 유효성 체크 모델
 		return "emp/add_emp";
 	}
 	

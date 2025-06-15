@@ -18,13 +18,13 @@ public class FileDbServiceImpl implements FileDbService {
 	FileDbMapper fileDbMapper;
 
 	@Override
-	public List<?> selectFileDbList(Criteria criteria) {
-		return fileDbMapper.selectFileDbList(criteria);
+	public List<?> selectFileDbList(Criteria searchVO) {
+		return fileDbMapper.selectFileDbList(searchVO);
 	}
 	
 	@Override
-	public int selectFileDbListTotCnt(Criteria criteria) {
-		return fileDbMapper.selectFileDbListTotCnt(criteria);
+	public int selectFileDbListTotCnt(Criteria searchVO) {
+		return fileDbMapper.selectFileDbListTotCnt(searchVO);
 	}
 	
 	@Override

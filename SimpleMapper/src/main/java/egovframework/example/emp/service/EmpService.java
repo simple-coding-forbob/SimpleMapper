@@ -5,8 +5,8 @@ import java.util.List;
 import egovframework.example.common.Criteria;
 
 public interface EmpService {
-	List<?> selectEmpList(Criteria criteria);
-	int selectEmpListTotCnt(Criteria criteria);    
+	List<?> selectEmpList(Criteria searchVO);
+	int selectEmpListTotCnt(Criteria searchVO);    
 	void insert(EmpVO empVO);  
 	EmpVO selectEmp(int eno);     
 	void update(EmpVO empVO);  

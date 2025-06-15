@@ -9,7 +9,7 @@
 		WHERE DNAME LIKE '%'|| #{searchKeyword} ||'%'
 		OFFSET #{firstIndex} ROWS
 		FETCH NEXT #{pageUnit} ROWS ONLY
-	</select>
+	</select>	
 	
 	<select id="selectDeptListTotCnt"
 			parameterType="Criteria"

@@ -9,8 +9,8 @@ import egovframework.example.fileDb.service.FileDbVO;
 
 @Mapper
 public interface FileDbMapper {
-	public List<?> selectFileDbList(Criteria criteria);   
-	public int selectFileDbListTotCnt(Criteria criteria); 
+	public List<?> selectFileDbList(Criteria searchVO);   
+	public int selectFileDbListTotCnt(Criteria searchVO); 
 	public int insert(FileDbVO fileDbVO);                 
 	public FileDbVO selectFileDb(String  uuid);           
 	public int delete(String uuid);                       

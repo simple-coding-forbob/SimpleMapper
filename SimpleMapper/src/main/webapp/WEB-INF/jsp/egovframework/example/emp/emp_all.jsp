@@ -4,7 +4,8 @@
 <head>
 	<title>Home</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <jsp:include page="/common/link.jsp"></jsp:include>
+    <script src="/js/emp/emp-autocomplete.js" type="text/javascript"></script>
 	<script type="text/javascript" defer="defer">
 		function fn_egov_link_page(pageNo) {
 			$("#pageIndex").val(pageNo); 
@@ -22,8 +23,6 @@
 						.submit();
 		}
 	</script>
-	<script src="/js/emp/emp-autocomplete.js" type="text/javascript"></script>
-	<script src="/js/jquery.twbsPagination.js" type="text/javascript"></script>	
 	<script type="text/javascript">
 	    $(function () {
 	        $('#pagination').twbsPagination({
@@ -40,12 +39,12 @@
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
-<div class="container">
+<div class="page mt3">
 		<form id="listForm" name="listForm" method="get">
 		<input type="hidden" id="eno" name="eno">
 		<input type="hidden" id="pageIndex" name="pageIndex">
 		
-		<div class="input-group mb-3 mt-3">
+		<div class="input-group mb3 mt3">
 		  <input type="text" 
 		         class="form-control" 
 		         id="searchKeyword"

@@ -25,7 +25,7 @@ public class FaqController {
 	
 	@GetMapping("/faq/faq.do")
 	public String selectFaqList(
-			@ModelAttribute Criteria criteria,
+			@ModelAttribute("searchVO") Criteria criteria,
 			Model model) {
 //		１） PaginationInfo: 전체 페이지수, offset 자동계산해 주는 클래스(쿼리에 필요함)
 //		 => 자동계산을 위한 정보: 1) 현재페이지번호, 화면에 보여줄 개수
@@ -47,7 +47,8 @@ public class FaqController {
 
 //	추가 페이지 열기 함수
 	@GetMapping("/faq/addition.do")
-	public String createFaqView() {
+	public String createFaqView(Model model) {
+		model.addAttribute("faqVO", new FaqVO()); // 유효성 체크 모델
 		return "faq/add_faq";
 	}
 

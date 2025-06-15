@@ -4,7 +4,8 @@
 <head>
 	<title>Faq</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <jsp:include page="/common/link.jsp"></jsp:include>
+    <script src="/js/faq/faq-autocomplete.js" type="text/javascript"></script>
 	<script type="text/javascript" defer="defer">
 		function fn_egov_link_page(pageNo) {
 			$("#pageIndex").val(pageNo); 
@@ -22,8 +23,7 @@
 						.submit();
 		}
 	</script>
-	<script src="/js/faq/faq-autocomplete.js" type="text/javascript"></script>
-	<script src="/js/jquery.twbsPagination.js" type="text/javascript"></script>		
+	
 	<script type="text/javascript">
 	    $(function () {
 	        $('#pagination').twbsPagination({
