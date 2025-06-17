@@ -33,7 +33,7 @@ public class FileDbController {
 	FileDbService fileDbService;
 
 	@GetMapping("/fileDb/fileDb.do")
-	public String selectFileDbList(@ModelAttribute("searchVO") Criteria criteria, Model model) {
+	public String selectFileDbList(@ModelAttribute Criteria criteria, Model model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();         
 		paginationInfo.setCurrentPageNo(criteria.getPageIndex());     

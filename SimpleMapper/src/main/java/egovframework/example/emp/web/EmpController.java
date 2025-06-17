@@ -22,7 +22,7 @@ public class EmpController {
 	private EmpService empService; 
 	
 	@GetMapping("/emp/emp.do")
-	public String selectEmpList(@ModelAttribute("searchVO") Criteria criteria,
+	public String selectEmpList(@ModelAttribute Criteria criteria,
 			Model model
 			) {
 		PaginationInfo paginationInfo = new PaginationInfo();         

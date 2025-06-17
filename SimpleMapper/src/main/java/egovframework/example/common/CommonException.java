@@ -19,6 +19,6 @@ public class CommonException {
         log.info("에러: " + errors);
         model.addAttribute("errors", errors);
         
-        return "error_page";
+        return "errors";
     }
 }

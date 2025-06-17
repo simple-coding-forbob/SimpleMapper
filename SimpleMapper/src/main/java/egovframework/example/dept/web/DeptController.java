@@ -29,7 +29,7 @@ public class DeptController {
 	
 	@GetMapping("/dept/dept.do")
 	public String selectDeptList(
-			@ModelAttribute("searchVO") Criteria criteria,
+			@ModelAttribute Criteria criteria,
 			Model model) {
 //		１） PaginationInfo: 전체 페이지수, offset 자동계산해 주는 클래스(쿼리에 필요함)
 //		 => 자동계산을 위한 정보: 1) 현재페이지번호, 화면에 보여줄 개수

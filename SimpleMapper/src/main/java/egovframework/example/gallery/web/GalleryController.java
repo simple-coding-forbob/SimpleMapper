@@ -31,7 +31,7 @@ public class GalleryController {
 	GalleryService galleryService; 
 
 	@GetMapping("/gallery/gallery.do")
-	public String selectGalleryList(@ModelAttribute("searchVO") Criteria criteria, Model model) {
+	public String selectGalleryList(@ModelAttribute Criteria criteria, Model model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo(); 
 		paginationInfo.setCurrentPageNo(criteria.getPageIndex()); 
