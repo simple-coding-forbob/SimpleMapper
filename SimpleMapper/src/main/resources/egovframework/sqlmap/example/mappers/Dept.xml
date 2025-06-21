@@ -2,14 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="egovframework.example.dept.service.impl.DeptMapper">
-	<select id="selectDeptList" 
+    <select id="selectDeptList" 
 	        parameterType="Criteria" 
 	        resultType="DeptVO">
 		SELECT * FROM TB_DEPT
 		WHERE DNAME LIKE '%'|| #{searchKeyword} ||'%'
 		OFFSET #{firstIndex} ROWS
 		FETCH NEXT #{pageUnit} ROWS ONLY
-	</select>	
+	</select>
+	
+<!--     <select id="selectDeptList" 
+	        parameterType="Criteria" 
+	        resultType="DeptVO">
+		SELECT * FROM TB_DEPT
+		<if test="searchKeyword != ''">
+			WHERE DNAME LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		OFFSET #{firstIndex} ROWS
+		FETCH NEXT #{pageUnit} ROWS ONLY
+	</select> -->
 	
 	<select id="selectDeptListTotCnt"
 			parameterType="Criteria"

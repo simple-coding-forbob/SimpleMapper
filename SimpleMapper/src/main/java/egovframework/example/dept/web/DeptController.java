@@ -37,13 +37,15 @@ public class DeptController {
 		paginationInfo.setCurrentPageNo(criteria.getPageIndex());     // 현재페이지번호
 		paginationInfo.setRecordCountPerPage(criteria.getPageUnit()); // 화면에 보여줄 개수         
 		
-		criteria.setFirstIndex(paginationInfo.getFirstRecordIndex()); // offset 자동 계산값 넣기
+		criteria.setFirstIndex(paginationInfo.getFirstRecordIndex()); // offset(등차값) 자동 계산값 넣기
 		
 		List<?> depts = deptService.selectDeptList(criteria);
+		log.info("depts : "+depts);
 		model.addAttribute("depts", depts);
+		
 		int totCnt = deptService.selectDeptListTotCnt(criteria);
 		paginationInfo.setTotalRecordCount(totCnt);                   // 전체 행 개수
-		
+		log.info("totCnt : "+totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 		
 		return "dept/dept_all";

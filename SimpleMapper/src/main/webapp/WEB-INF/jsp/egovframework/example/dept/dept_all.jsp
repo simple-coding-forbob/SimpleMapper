@@ -11,6 +11,10 @@
 
 </head>
 <body>
+${depts}<br>
+${paginationInfo.totalPageCount}<br>
+${paginationInfo.currentPageNo}<br>
+${paginationInfo.recordCountPerPage}<br>
 <jsp:include page="/common/header.jsp"></jsp:include>
 <div class="page mt3">
 	<form id="listForm" name="listForm" method="get">

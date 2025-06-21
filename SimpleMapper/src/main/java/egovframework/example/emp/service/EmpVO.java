@@ -1,7 +1,9 @@
 package egovframework.example.emp.service;
 
 import egovframework.example.common.Criteria;
+import egovframework.example.dept.service.DeptVO;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +14,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@SuppressWarnings("serial")
+@EqualsAndHashCode(callSuper = false)
 public class EmpVO extends Criteria {
 	private int eno;            // 사원번호(기본키)
 	private String ename;       // 사원명
