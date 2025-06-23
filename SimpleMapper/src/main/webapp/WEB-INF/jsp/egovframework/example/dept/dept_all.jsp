@@ -18,7 +18,9 @@ ${paginationInfo.recordCountPerPage}<br>
 <jsp:include page="/common/header.jsp"></jsp:include>
 <div class="page mt3">
 	<form id="listForm" name="listForm" method="get">
+		<!-- 수정페이지 열기때문에 필요 -->
 	    <input type="hidden" id="dno" name="dno">
+		<!-- 페이지번호 때문에 필요 -->
 	    <input type="hidden" id="pageIndex" name="pageIndex">
 	    
 		<div class="input-group mb3 mt3">
@@ -60,6 +62,7 @@ ${paginationInfo.recordCountPerPage}<br>
 		  </tbody>
 		</table>
 	
+		<!-- 페이지번호 -->
 		<div id="paging" class="flex-center">
 		    <ul class="pagination" id="pagination"></ul>
 		</div>
@@ -70,9 +73,9 @@ ${paginationInfo.recordCountPerPage}<br>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <!-- 부트스트랩 js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<!-- 유효성체크 라이브러리 -->
+<!-- 유효성체크 라이브러리: https://jqueryvalidation.org/ -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.21.0/dist/jquery.validate.min.js"></script>
-<!-- 페이징 라이브러리 -->
+<!-- 페이징 라이브러리: https://josecebe.github.io/twbs-pagination/ -->
 <script src="/js/jquery.twbsPagination.js" type="text/javascript"></script>
 
 <script src="/js/dept/dept-autocomplete.js" type="text/javascript"></script>
