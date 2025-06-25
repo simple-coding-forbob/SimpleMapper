@@ -49,7 +49,7 @@ public class EmpController {
 	public String insert(@ModelAttribute EmpVO empVO) {
 		empService.insert(empVO);
 		
-		return "redirect:/emp/emp.do"; 
+		return "redirect:/emp/emp.do";
 	}
 	
 

@@ -22,7 +22,7 @@
                    class="form-control"
                    id="dname"
                    name="dname"
-                   value="<c:out value="${deptVO.dname}" />"
+                   value="<c:out value='${deptVO.dname}' />"
                    placeholder="dname" />
         </div>
         <div class="mb3">

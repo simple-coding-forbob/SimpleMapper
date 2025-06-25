@@ -67,7 +67,7 @@ $("#addForm").validate({
     },
     hiredate: {
       required: "필수 입력 항목입니다.",
-      digits: "날짜 포맷(yyyy-MM-dd)만 입력하세요.",
+      date: "날짜 포맷(yyyy-MM-dd)만 입력하세요.",
     }
   },
 });
