@@ -17,6 +17,7 @@
         <typeAlias type="egovframework.example.fileDb.service.FileDbVO" alias="FileDbVO"/>
         <typeAlias type="egovframework.example.gallery.service.GalleryVO" alias="GalleryVO"/>
                         
+        <!-- aaa -->
         <!-- 기본 샘플: 지우지 마시오(연관된 파일 모두 지워야함) -->
 		<typeAlias alias="egovMap" type="org.egovframe.rte.psl.dataaccess.util.EgovMap"/>
 		<typeAlias alias="searchVO" type="egovframework.example.sample.service.SampleDefaultVO"/>
