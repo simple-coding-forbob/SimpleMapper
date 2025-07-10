@@ -29,11 +29,11 @@ DROP TABLE TB_FILE_DB CASCADE CONSTRAINT;
 DROP TABLE TB_GALLERY CASCADE CONSTRAINT;
 
 CREATE TABLE TB_DEPT (
-                         DNO NUMBER NOT NULL PRIMARY KEY,
-                         DNAME VARCHAR2(255),
-                         LOC VARCHAR2(255),
-                         INSERT_TIME DATE,
-                         UPDATE_TIME DATE
+     DNO NUMBER NOT NULL PRIMARY KEY,
+     DNAME VARCHAR2(255),
+     LOC VARCHAR2(255),
+    INSERT_TIME DATE,
+    UPDATE_TIME DATE
 );
 
 CREATE TABLE TB_EMP
@@ -52,11 +52,11 @@ CREATE TABLE TB_EMP
 );
 
 CREATE TABLE TB_FAQ (
-                        FNO NUMBER NOT NULL PRIMARY KEY,
-                        TITLE VARCHAR2(255),
-                        CONTENT VARCHAR2(255),
-                        INSERT_TIME DATE,
-                        UPDATE_TIME DATE
+    FNO NUMBER NOT NULL PRIMARY KEY,
+    TITLE VARCHAR2(255),
+    CONTENT VARCHAR2(255),
+    INSERT_TIME DATE,
+    UPDATE_TIME DATE
 );
 
 
@@ -68,8 +68,8 @@ CREATE TABLE TB_FILE_DB
     FILE_CONTENT VARCHAR2(1000),           -- 내용
     FILE_DATA    BLOB,                     -- 바이너리 파일(이미지파일)
     FILE_URL     VARCHAR2(1000),           -- 파일 다운로드 URL
-    INSERT_TIME  DATE,
-    UPDATE_TIME  DATE
+    INSERT_TIME DATE,
+    UPDATE_TIME DATE
 );
 
 -- Upload Gallery Table
@@ -79,8 +79,8 @@ CREATE TABLE TB_GALLERY
     GALLERY_TITLE     VARCHAR2(1000),      -- 제목
     GALLERY_DATA      BLOB,                -- 바이너리 파일(이미지파일)
     GALLERY_FILE_URL  VARCHAR2(1000),      -- 파일 다운로드 URL
-    INSERT_TIME       DATE,
-    UPDATE_TIME       DATE
+    INSERT_TIME DATE,
+    UPDATE_TIME DATE
 );
 
 -- TODO: 인증관련 테이블 정의

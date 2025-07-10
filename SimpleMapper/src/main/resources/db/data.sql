@@ -27,7 +27,7 @@ INSERT INTO TB_EMP
 VALUES (SQ_EMP.nextval, 'JONES', 'MANAGER', 7839, to_date('2-4-1981', 'dd-mm-yyyy'), 2975, NULL,
         20, SYSDATE,NULL);
 INSERT INTO TB_EMP
-VALUES (SQ_EMP.nextval, 'MARTIN', 'SALESMAN', 7698, to_date('28-9-1981', 'dd-mm-yyyy'),, 1250,
+VALUES (SQ_EMP.nextval, 'MARTIN', 'SALESMAN', 7698, to_date('28-9-1981', 'dd-mm-yyyy'), 1250,
         1400, 30, SYSDATE,NULL);
 INSERT INTO TB_EMP
 VALUES (SQ_EMP.nextval, 'BLAKE', 'MANAGER', 7839, to_date('1-5-1981', 'dd-mm-yyyy'), 2850, NULL,
@@ -92,6 +92,6 @@ VALUES (12345674, '제목4',NULL, 'https://placehold.co/600x400', SYSDATE);
 -- password : 123456
 -- email : forbob@naver.com
 -- roles : ROLE_ADMIN
-INSERT INTO TB_MEMBER VALUES('forbob@naver.com','$2a$10$TG1a5ywSrGNgf7/fFH.m0.EdTzHax8AGYNeAr8aIseF3DKyO0lDti','forbob','ROLE_ADMIN', SYSDATE,NULL);
+INSERT INTO TB_MEMBER VALUES('forbob@naver.com','$2a$10$TG1a5ywSrGNgf7/fFH.m0.EdTzHax8AGYNeAr8aIseF3DKyO0lDti','forbob','ROLE_ADMIN', SYSDATE, NULL);
 
 COMMIT;
