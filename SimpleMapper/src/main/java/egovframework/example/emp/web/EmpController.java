@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import egovframework.example.common.Criteria;
 import egovframework.example.emp.service.EmpService;
 import egovframework.example.emp.service.EmpVO;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Controller
 public class EmpController {
 	
@@ -57,6 +59,7 @@ public class EmpController {
 	public String updateEmpView(@RequestParam int eno, Model model) {
 		EmpVO empVO = empService.selectEmp(eno);
 		model.addAttribute("empVO", empVO);
+		log.info(empVO);
 		return "emp/update_emp";
 	}
 	

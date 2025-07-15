@@ -31,7 +31,7 @@
 		                     #{fileContent},
 		                     #{fileData}, 
 		                     #{fileUrl},
-		                     to_char(sysdate,'YYYY-MM-DD HH24:MI:SS'))
+		                     SYSDATE)
 	</insert>
 	
 	<select id="selectFileDb" 
