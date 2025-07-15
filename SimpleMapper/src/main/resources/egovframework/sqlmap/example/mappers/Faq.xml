@@ -30,8 +30,7 @@
 		        SQ_FAQ.NEXTVAL
 		        , #{title} 
 		        , #{content} 
-		        ,TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
-		)
+		        ,SYSDATE)
 	</insert>
 	
 	<select id="selectFaq" 
@@ -46,7 +45,7 @@
 		UPDATE TB_FAQ 
 		  SET TITLE = #{title}
 		     ,CONTENT   = #{content}
-		     ,UPDATE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
+		     ,UPDATE_TIME = SYSDATE
 		WHERE FNO = #{fno}
 	</update>
 	
