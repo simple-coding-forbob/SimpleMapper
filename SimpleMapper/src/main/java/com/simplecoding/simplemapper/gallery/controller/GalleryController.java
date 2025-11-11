@@ -3,19 +3,22 @@
  */
 package com.simplecoding.simplemapper.gallery.controller;
 
+import com.simplecoding.simplemapper.common.CommonUtil;
 import com.simplecoding.simplemapper.common.Criteria;
 import com.simplecoding.simplemapper.gallery.service.GalleryService;
 import com.simplecoding.simplemapper.gallery.vo.GalleryVO;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Controller
@@ -23,6 +26,8 @@ public class GalleryController {
 
 	@Autowired
     GalleryService galleryService;
+    @Autowired
+    private CommonUtil commonUtil;
 
 	@GetMapping("/gallery")
 	public String selectGalleryList(@ModelAttribute Criteria criteria, Model model) {
@@ -45,24 +50,31 @@ public class GalleryController {
 	}
 	
 	@PostMapping("/gallery/add")
-	public String insert(@RequestParam(defaultValue = "") String galleryTitle,
-							@RequestParam(required = false) MultipartFile image
+	public String insert(       @Valid @ModelAttribute GalleryVO galleryVO,
+                                BindingResult result
 			) throws Exception {
-		GalleryVO galleryVO = new GalleryVO(galleryTitle, image.getBytes());
+        commonUtil.checkBindingResult(result);
 		galleryService.insert(galleryVO);
 		return "redirect:/gallery"; 
 	}
 	
-	@GetMapping("/gallery/download")
+	@GetMapping("/download/gallery")
 	@ResponseBody
-	public ResponseEntity<byte[]> findDownload(@RequestParam(defaultValue = "") String uuid) {
-		GalleryVO galleryVO = galleryService.selectGallery(uuid);
-		
-        HttpHeaders headers = new HttpHeaders();             
-        headers.setContentDispositionFormData("attachment", galleryVO.getUuid()); 
-        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);              
+	public ResponseEntity<byte[]> findDownload(@RequestParam(defaultValue = "") String uuid) throws Exception {
+        GalleryVO galleryVO = galleryService.selectGallery(uuid);
 
-        return new ResponseEntity<byte[]>(galleryVO.getGalleryData(), headers, HttpStatus.OK);
+        // 서버에 저장된 실제 파일 경로
+        byte[] file= commonUtil.readFile(uuid);
+
+        // ContentDisposition 사용 (브라우저 호환성 보장)
+        ContentDisposition contentDisposition = ContentDisposition.attachment()
+                .filename(galleryVO.getUuid(), StandardCharsets.UTF_8) // 실제 업로드한 파일명
+                .build();
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition.toString())
+                .body(file);
 	}
 	
 	@PostMapping("/gallery/delete")

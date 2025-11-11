@@ -17,9 +17,3 @@ public class DeptVO extends Criteria {
 	private String dname;      // 부서명
 	private String loc;        // 부서위치
 }
-
-
-
-
-
-
