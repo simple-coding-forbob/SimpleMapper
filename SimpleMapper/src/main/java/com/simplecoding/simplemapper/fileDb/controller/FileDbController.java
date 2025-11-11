@@ -3,21 +3,23 @@
  */
 package com.simplecoding.simplemapper.fileDb.controller;
 
+import com.simplecoding.simplemapper.common.CommonUtil;
 import com.simplecoding.simplemapper.common.Criteria;
 import com.simplecoding.simplemapper.fileDb.service.FileDbService;
 import com.simplecoding.simplemapper.fileDb.vo.FileDbVO;
-import lombok.extern.log4j.Log4j;
+import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Log4j2
@@ -26,14 +28,16 @@ public class FileDbController {
 
 	@Autowired
     FileDbService fileDbService;
+    @Autowired
+    private CommonUtil commonUtil;
 
 	@GetMapping("/fileDb")
 	public String selectFileDbList(@ModelAttribute Criteria criteria, Model model) {
 
         criteria.setPageOffset(criteria.getPage());       // Offset 자동 계산
 
-		List<?> fileDBs = fileDbService.selectFileDbList(criteria);
-		model.addAttribute("fileDBs", fileDBs);
+		List<?> fileDbs = fileDbService.selectFileDbList(criteria);
+		model.addAttribute("fileDbs", fileDbs);
 		
 		int totCnt = fileDbService.selectFileDbListTotCnt(criteria);
         criteria.calculateTotalPage(totCnt);
@@ -49,25 +53,31 @@ public class FileDbController {
 	}
 	
 	@PostMapping("/fileDb/add")
-	public String insert(@RequestParam(defaultValue = "") String fileTitle,
-							@RequestParam(defaultValue = "") String fileContent,
-							@RequestParam(required = false) MultipartFile image
+	public String insert(        @Valid @ModelAttribute FileDbVO fileDbVO,
+                                 BindingResult result
 			) throws Exception {
-		FileDbVO fileDbVO = new FileDbVO(fileTitle, fileContent, image.getBytes());
+        commonUtil.checkBindingResult(result);
 		fileDbService.insert(fileDbVO);
 		return "redirect:/fileDb"; 
 	}
 	
-	@GetMapping("/fileDb/download")
+	@GetMapping("/download/fileDb")
 	@ResponseBody
-	public ResponseEntity<byte[]> findDownload(@RequestParam(defaultValue = "") String uuid) {
+	public ResponseEntity<byte[]> fileDownload(@RequestParam(defaultValue = "") String uuid) throws Exception {
 		FileDbVO fileDbVO = fileDbService.selectFileDb(uuid);
-		
-        HttpHeaders headers = new HttpHeaders();             
-        headers.setContentDispositionFormData("attachment", fileDbVO.getUuid()); 
-        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);              
 
-        return new ResponseEntity<byte[]>(fileDbVO.getFileData(), headers, HttpStatus.OK);
+        // 서버에 저장된 실제 파일 경로
+        byte[] file= commonUtil.readFile(uuid);
+
+        // ContentDisposition 사용 (브라우저 호환성 보장)
+        ContentDisposition contentDisposition = ContentDisposition.attachment()
+                .filename(fileDbVO.getUuid(), StandardCharsets.UTF_8) // 실제 업로드한 파일명
+                .build();
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition.toString())
+                .body(file);
 	}
 	
 	@PostMapping("/fileDb/delete")

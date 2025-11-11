@@ -8,56 +8,58 @@
     <title>부서 목록</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="부서 조회 페이지입니다.">
-    <!-- 	부트스트랩 css  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- 	tailwind cdn  -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- 	개발자 css -->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pagination.css">
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
-<div class="page mt3">
+<div class="container mx-auto mt-8 px-3" >
     <form id="listForm" name="listForm" method="get">
         <!-- 수정페이지 열기때문에 필요 -->
         <input type="hidden" id="dno" name="dno">
         <!-- TODO: 컨트롤러로 보낼 페이지번호 -->
         <input type="hidden" id="page" name="page" value="0">
+        <h1 class="text-2xl font-bold mb-6">부서 조회</h1>
 
         <!-- jsp -> 컨트롤러(검색어): input 태그의 name 속성을 이용 -->
-        <div class="input-group mb3 mt3">
+        <div class="flex justify-center mb-4">
             <input type="text"
-                   class="form-control"
+                   class="w-full border border-gray-300 rounded-l p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="searchKeyword"
                    name="searchKeyword"
                    placeholder="부서명입력"
                    value="${param.searchKeyword}"
             >
             <button type="button"
-                    class="btn btn-primary"
+                    class="bg-blue-700 text-white hover:bg-blue-800 px-4 py-2 rounded-r min-w-[5rem]"
                     onclick="fn_egov_link_page(0)"
             >
                 검색
             </button>
         </div>
-        <table class="table">
-            <thead>
+        <table class="w-[100%] border border-gray-200">
+            <thead class="bg-blue-700 text-white">
             <tr>
-                <th scope="col">dno</th>
-                <th scope="col">dname</th>
-                <th scope="col">loc</th>
+                <th scope="col" class="px-4 py-2 border-b">dno</th>
+                <th scope="col" class="px-4 py-2 border-b">dname</th>
+                <th scope="col" class="px-4 py-2 border-b">loc</th>
             </tr>
             </thead>
             <tbody>
             <!-- 반복문 -->
             <c:forEach var="data" items="${depts}">
-                <tr>
-                    <td>
-                        <a href="/dept/edition?dno=${data.dno}">
+                <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-2 border-b text-center">
+                        <a href="/dept/edition?dno=<c:out value='${data.dno}'/>">
                             <c:out value="${data.dno}"></c:out>
                         </a>
 
                     </td>
-                    <td><c:out value="${data.dname}"></c:out></td>
-                    <td><c:out value="${data.loc}"></c:out></td>
+                    <td class="px-4 py-2 border-b"><c:out value="${data.dname}"></c:out></td>
+                    <td class="px-4 py-2 border-b"><c:out value="${data.loc}"></c:out></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -66,18 +68,15 @@
             데이터가 없습니다.
         </c:if>
         <!-- 여기: 페이지번호 -->
-        <div class="flex-center">
+        <div class="flex justify-center mt-4">
             <ul class="pagination" id="pagination"></ul>
         </div>
 
     </form>
-
 </div>
 <!-- 꼬리말 -->
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<!-- 부트스트랩 js -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script>
     function fn_egov_link_page(page) {
         $("#page").val(page);
@@ -101,6 +100,5 @@
     });
 </script>
 
-<jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>

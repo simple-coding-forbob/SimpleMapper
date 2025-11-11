@@ -5,46 +5,47 @@
 <head>
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="fileDb 추가 페이지입니다.">
-    <!-- 	부트스트랩 css  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <meta name="description" content="gallery 추가 페이지입니다.">
+    <!-- 	tailwind cdn  -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- 	개발자 css -->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/validation-error.css">
 
 </head>
 <body>
 <jsp:include page="/common/header.jsp"/>
-<div class="page mt3">
+<div class="container mx-auto mt-8 px-3">
+    <h1 class="text-2xl font-bold mb-6">gallery 추가</h1>
     <form id="addForm"
           name="addForm"
           method="post"
           enctype="multipart/form-data"
     >
 
-        <div class="mb3">
-            <label for="galleryTitle" class="form-label">galleryTitle</label>
+        <div class="mb-4">
+            <label for="galleryTitle" class="block mb-1">galleryTitle</label>
             <input  type="text"
-                    class="form-control"
+                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                     id="galleryTitle"
                     name="galleryTitle"
                     placeholder="제목" />
         </div>
-        <div class="input-group">
+        <div class="mb-4 flex">
             <input type="file"
-                   class="form-control"
-                   id="image"
-                   name="image"
+                   class="w-full border border-gray-300 rounded-l p-2 focus:outline-none focus:ring focus:ring-blue-500"
+                   id="fileData"
+                   name="fileData"
             >
-            <button class="btn btn-primary"
-                    type="submit"
+            <button class="bg-blue-700 text-white hover:bg-blue-800 px-4 py-2 rounded-r min-w-[5rem]"
+                    type="button"
+                    onclick="fn_save()"
             >저장</button>
         </div>
     </form>
 </div>
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<!-- 부트스트랩 js -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <!-- 유효성체크 플러그인 -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.21.0/dist/jquery.validate.min.js"></script>
 <script src="/js/gallery/gallery-validation-config.js"></script>
@@ -57,6 +58,5 @@
     }
 </script>
 
-<jsp:include page="/common/footer.jsp"/>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.simplecoding.simplemapper.fileDb.vo;
 
 import com.simplecoding.simplemapper.common.Criteria;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,24 +12,12 @@ import org.springframework.web.multipart.MultipartFile;
 @NoArgsConstructor
 public class FileDbVO extends Criteria {
 	private String uuid;            // 기본키
-	private String fileTitle;       // 제목	
-	private String fileContent;     // 내용	
-	private byte[] fileData;        // 이미지파일	
-	private MultipartFile image;    // 내부적 사용(이미지파일)	
-	private String fileUrl;         // 다운로드 url(클릭:이미지 다운로드됨)	
-
-	public FileDbVO(String uuid, String fileTitle, String fileContent, byte[] fileData) {
-		this.uuid = uuid;
-		this.fileTitle = fileTitle;
-		this.fileContent = fileContent;
-		this.fileData = fileData;
-	}
-	
-	public FileDbVO(String fileTitle, String fileContent, byte[] fileData) {
-		this.fileTitle = fileTitle;
-		this.fileContent = fileContent;
-		this.fileData = fileData;
-	}
+    @NotBlank
+	private String fileTitle;       // 제목
+    @NotBlank
+	private String fileContent;     // 내용
+	private MultipartFile fileData;    // 내부적 사용(이미지파일)
+	private String fileUrl="https://placehold.co/600x400";     // 서버에 저장된 파일 URL
 }
 
 
