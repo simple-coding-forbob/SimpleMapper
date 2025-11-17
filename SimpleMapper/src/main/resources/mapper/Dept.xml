@@ -38,10 +38,10 @@
         ,INSERT_TIME
 		) 
 		VALUES(
-		        SQ_DEPT.NEXTVAL
-		        , #{dname} 
-		        , #{loc} 
-		        ,SYSDATE)
+		SQ_DEPT.NEXTVAL
+		, #{dname} 
+		, #{loc} 
+		,SYSDATE)
 	</insert>
 	
 	<select id="selectDept" 

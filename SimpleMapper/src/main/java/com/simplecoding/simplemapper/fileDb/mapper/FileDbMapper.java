@@ -15,8 +15,3 @@ public interface FileDbMapper {
 	FileDbVO selectFileDb(String  uuid);           
 	int delete(String uuid);                       
 }
-
-
-
-
-

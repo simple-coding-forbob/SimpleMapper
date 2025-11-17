@@ -32,12 +32,12 @@ public class GalleryService {
 
 
     public void insert(GalleryVO galleryVO) throws Exception {
-        String uuid = UUID.randomUUID().toString();                             // 1) UUID 만들기(기본키): 자바에서 중복안되게 만들어주는 글자(랜덤)
+        String uuid = UUID.randomUUID().toString();                           // 1) UUID 만들기(기본키): 자바에서 중복안되게 만들어주는 글자(랜덤)
         galleryVO.setUuid(uuid);
         if (galleryVO.getFileData() != null) {
-            String downloadURL = commonUtil.generateUrl("gallery", uuid);   // 2) 업로드 파일이 있을때만 다운로드 URL 만들기
+            String downloadURL = commonUtil.generateUrl("gallery", uuid);      // 2) 업로드 파일이 있을때만 다운로드 URL 만들기
             galleryVO.setGalleryFileUrl(downloadURL);
-            commonUtil.saveFile(galleryVO.getFileData(), uuid);                 // 3) 업로드 파일이 있을때만 파일 만들기
+            commonUtil.saveFile(galleryVO.getFileData(), uuid);                // 3) 업로드 파일이 있을때만 파일 만들기
         }
 
         galleryMapper.insert(galleryVO);

@@ -26,11 +26,11 @@ public class Criteria {
 	/** 검색사용여부 */
 	private String searchUseYn = "";
 
-	/** 현재페이지 */
-	private int page;
+	/** 현재페이지(초기값) */
+	private int page=0;
 
-	/** 페이지갯수: 화면에 보일 행 개수 */
-	private int size;
+	/** 페이지갯수: 화면에 보일 행 개수(초기값) */
+	private int size=3;
 
 	/** 오프셋 */
 	private int offset;

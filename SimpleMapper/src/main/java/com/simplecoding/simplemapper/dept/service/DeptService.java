@@ -19,13 +19,13 @@ public class DeptService {
 	private DeptMapper deptMapper;
 
 	
-	public List<?> selectDeptList(Criteria searchVO) {
-		return deptMapper.selectDeptList(searchVO);
+	public List<?> selectDeptList(Criteria criteria) {
+		return deptMapper.selectDeptList(criteria);
 	}
 	
 	
-	public int selectDeptListTotCnt(Criteria searchVO) {
-		return deptMapper.selectDeptListTotCnt(searchVO);
+	public int selectDeptListTotCnt(Criteria criteria) {
+		return deptMapper.selectDeptListTotCnt(criteria);
 	}
 	
 	
