@@ -2,6 +2,7 @@ package com.simplecoding.simplemapper.common;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
@@ -17,12 +18,12 @@ import java.util.Locale;
 
 @Component
 @Log4j2
-@RequiredArgsConstructor
 public class CommonUtil {
 
     @Value("${image.upload-dir}")
     private String uploadDir;
-    private final MessageSource messageSource;
+    @Autowired
+    private MessageSource messageSource;
 
 //    에러메세지 표시
     public String getMessage(String code) {

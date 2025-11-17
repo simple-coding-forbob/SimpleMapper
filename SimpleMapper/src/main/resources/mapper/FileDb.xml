@@ -45,15 +45,3 @@
 		WHERE UUID = #{uuid}
 	</delete>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-

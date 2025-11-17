@@ -60,7 +60,7 @@ public class GalleryController {
 	
 	@GetMapping("/download/gallery")
 	@ResponseBody
-	public ResponseEntity<byte[]> findDownload(@RequestParam(defaultValue = "") String uuid) throws Exception {
+	public ResponseEntity<byte[]> fileDownload(@RequestParam(defaultValue = "") String uuid) throws Exception {
         GalleryVO galleryVO = galleryService.selectGallery(uuid);
 
         // 서버에 저장된 실제 파일 경로

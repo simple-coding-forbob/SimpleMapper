@@ -31,61 +31,75 @@
         <java.version>17</java.version>
     </properties>
     <dependencies>
-<!--        서버 유효성 체크 -->
+       <!-- 서버 유효성 체크 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
-        <!-- JSP 사용을 위한 Jasper -->
+        <!-- JSP 기본 -->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
 
-        <!-- JSTL -->
+        <!-- JSP 태그(JSTL) -->
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>jakarta.servlet.jsp.jstl</artifactId>
             <version>2.0.0</version>
         </dependency>
 
+        <!-- 스프링에 웹 기능 추가 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!-- Mybatis -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>3.0.5</version>
         </dependency>
 
+        <!-- 자바 코드 수정시 자동 서버 재시작 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+        <!-- 오라클 -->
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
             <artifactId>ojdbc11</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- 롬북 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!-- 톰캣(WAS) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <!-- JUNIT(테스트) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Mybatis(테스트) -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter-test</artifactId>
