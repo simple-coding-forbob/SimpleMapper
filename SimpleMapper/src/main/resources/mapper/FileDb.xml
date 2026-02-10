@@ -32,14 +32,6 @@
 		                     SYSDATE)
 	</insert>
 	
-	<select id="selectFileDb" 
-	        parameterType="String"
-	        resultType="FileDbVO"
-	>
-		SELECT * FROM TB_FILE_DB
-		WHERE UUID = #{uuid}
-	</select>
-	
 	<delete id="delete" parameterType="String">
 		DELETE TB_FILE_DB
 		WHERE UUID = #{uuid}

@@ -60,24 +60,25 @@ public class FileDbController {
 		fileDbService.insert(fileDbVO);
 		return "redirect:/fileDb"; 
 	}
-	
+
+// 이미지 인터넷 주소: http://localhost:8080/download/fileDb/이미지명(uuid)
+// commonUtil.generateUrl("fileDb",uuid); 함수가 만듬(서비스에서 코딩됨)
 	@GetMapping("/download/fileDb")
 	@ResponseBody
 	public ResponseEntity<byte[]> fileDownload(@RequestParam(defaultValue = "") String uuid) throws Exception {
-		FileDbVO fileDbVO = fileDbService.selectFileDb(uuid);
 
-        // 서버에 저장된 실제 파일 경로
+        // pc에 저장된 파일 uuid(이미지명)로 가져오기
         byte[] file= commonUtil.readFile(uuid);
 
-        // ContentDisposition 사용 (브라우저 호환성 보장)
-        ContentDisposition contentDisposition = ContentDisposition.attachment()
-                .filename(fileDbVO.getUuid(), StandardCharsets.UTF_8) // 실제 업로드한 파일명
-                .build();
+        // ContentDisposition 사용 (브라우저 호환성 보장) : 첨부파일 설명 만들기(이미지명 등)
+        ContentDisposition contentDisposition = ContentDisposition.attachment()         // 첨부파일 설명 넣기 준비
+                .filename(uuid, StandardCharsets.UTF_8)                                 // 이미지명(uuid)
+                .build();                                                               // 위 설정 만듬
 
-        return ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_OCTET_STREAM)
-                .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition.toString())
-                .body(file);
+        return ResponseEntity.ok()                                                      // ok 신호(200번) ,
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)                        // 문서종류: 이진 파일(이미지, 동영상 등)
+                .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition.toString()) // 위에서 만든 첨부파일 설명 넣기(이미지명 등)
+                .body(file);                                                            // 실제 첨부파일(file)
 	}
 	
 	@PostMapping("/fileDb/delete")

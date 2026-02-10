@@ -11,7 +11,6 @@ import java.util.List;
 public interface FileDbMapper {
 	List<?> selectFileDbList(Criteria searchVO);   
 	int selectFileDbListTotCnt(Criteria searchVO); 
-	int insert(FileDbVO fileDbVO);                 
-	FileDbVO selectFileDb(String  uuid);           
+	int insert(FileDbVO fileDbVO);
 	int delete(String uuid);                       
 }

@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class GalleryVO extends Criteria {
 	private String uuid;           // 기본키
 	private String galleryTitle;   // 제목

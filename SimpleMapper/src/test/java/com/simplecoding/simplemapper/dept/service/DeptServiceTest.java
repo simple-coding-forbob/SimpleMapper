@@ -22,7 +22,7 @@ class DeptServiceTest {
     void selectDeptList() {
         Criteria criteria = new Criteria();
         criteria.setSearchKeyword("");
-        criteria.setPage(0);
+        criteria.setOffset(3);
         criteria.setSize(3);
         List<?> list= deptService.selectDeptList(criteria);
         log.info(list);

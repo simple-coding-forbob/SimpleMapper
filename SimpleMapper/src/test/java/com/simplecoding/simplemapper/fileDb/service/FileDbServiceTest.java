@@ -37,13 +37,6 @@ class FileDbServiceTest {
     }
 
     @Test
-    void selectFileDb() {
-
-        FileDbVO fileDbVO = fileDbService.selectFileDb("12345671");
-        log.info(fileDbVO);
-    }
-
-    @Test
     void delete() {
         fileDbService.delete("12345671");
     }

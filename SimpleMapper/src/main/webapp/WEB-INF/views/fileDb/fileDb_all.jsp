@@ -15,8 +15,6 @@
 <body>
 <jsp:include page="/common/header.jsp"/>
 <form class="container mx-auto mt-8 px-3" id="listForm" name="listForm" method="get">
-
-    <!-- 수정페이지 열기때문에 필요 -->
     <input type="hidden" id="uuid" name="uuid">
     <!-- TODO: 컨트롤러로 보낼 페이지번호 -->
     <input type="hidden" id="page" name="page" value="0">

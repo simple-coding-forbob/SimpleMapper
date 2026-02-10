@@ -12,14 +12,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- 	개발자 css -->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/pagination.css">
 </head>
 <body>
-<jsp:include page="/common/header.jsp"></jsp:include>
+<%--머리말--%>
 <div class="container mx-auto mt-8 px-3" >
-    <form id="listForm" name="listForm" method="get">
-        <!-- 수정페이지 열기때문에 필요 -->
-<%--        <input type="hidden" id="dno" name="dno">--%>
+    <form id="listForm" name="listForm" >
 
         <h1 class="text-2xl font-bold mb-6">부서 조회</h1>
 
@@ -30,11 +27,9 @@
                    id="searchKeyword"
                    name="searchKeyword"
                    placeholder="부서명입력"
-                   value="${param.searchKeyword}"
             >
             <button type="button"
                     class="bg-blue-700 text-white hover:bg-blue-800 px-4 py-2 rounded-r min-w-[5rem]"
-                    onclick="fn_egov_link_page(0)"
             >
                 검색
             </button>
@@ -49,56 +44,25 @@
             </thead>
             <tbody>
             <!-- 반복문 -->
-            <c:forEach var="data" items="${depts}">
                 <tr class="hover:bg-gray-50">
                     <td class="px-4 py-2 border-b text-center">
-                        <a href="/dept/edition?dno=<c:out value='${data.dno}'/>">
-                            <c:out value="${data.dno}"></c:out>
-                        </a>
+
+                            11
+
 
                     </td>
-                    <td class="px-4 py-2 border-b"><c:out value="${data.dname}"></c:out></td>
-                    <td class="px-4 py-2 border-b"><c:out value="${data.loc}"></c:out></td>
+                    <td class="px-4 py-2 border-b">22</td>
+                    <td class="px-4 py-2 border-b">33</td>
                 </tr>
-            </c:forEach>
             </tbody>
         </table>
-        <c:if test="${empty depts}">
-            데이터가 없습니다.
-        </c:if>
         <!-- 여기: 페이지번호 -->
         <div class="flex justify-center mt-4">
             <ul class="pagination" id="pagination"></ul>
         </div>
-        <!-- TODO: 컨트롤러로 보낼 페이지번호 -->
-        <input type="text" id="page" name="page" value="0">
+
     </form>
 </div>
-<!-- 꼬리말 -->
-<!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
-    function fn_egov_link_page(page) {
-        $("#page").val(page);
-        $("#listForm").attr("action", "/dept")
-            .submit();
-    }
-</script>
-
-<!-- TODO: 페이징 라이브러리(CDN 사용) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-<script type="text/javascript">
-    /* 페이징 처리 */
-    $('#pagination').twbsPagination({
-        totalPages: ${criteria.totalPages},
-        startPage:${criteria.page},
-        visiblePages: ${criteria.size},
-        initiateStartPageClick: false,
-        onPageClick: function (event, page) {
-            fn_egov_link_page(page)
-        }
-    });
-</script>
 
 </body>
 </html>
