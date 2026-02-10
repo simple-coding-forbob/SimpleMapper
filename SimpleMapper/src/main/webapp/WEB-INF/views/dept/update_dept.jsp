@@ -19,14 +19,14 @@
     <h1 class="text-2xl font-bold mb-6">부서 상세조회</h1>
     <form id="addForm" name="addForm" method="post">
 
-        <input type="hidden" id="dno" name="dno" value="<c:out value="${deptVO.dno}"/>" />
+        <input type="hidden" id="dno" name="dno" value="<c:out value="${dept.dno}"/>" />
         <div class="mb-4">
             <label for="dname" class="block mb-1">dname</label>
             <input type="text"
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="dname"
                    name="dname"
-                   value="<c:out value="${deptVO.dname}"/>"
+                   value="<c:out value="${dept.dname}"/>"
                    placeholder="부서명">
         </div>
         <div class="mb-4">
@@ -35,7 +35,7 @@
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="loc"
                    name="loc"
-                   value="<c:out value="${deptVO.loc}"/>"
+                   value="<c:out value="${dept.loc}"/>"
                    placeholder="부서위치">
         </div>
         <div class="mb-4 flex gap-2">

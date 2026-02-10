@@ -2,8 +2,7 @@ package com.simplecoding.simplemapper.faq.controller;
 
 import com.simplecoding.simplemapper.common.Criteria;
 import com.simplecoding.simplemapper.faq.service.FaqService;
-import com.simplecoding.simplemapper.faq.vo.FaqVO;
-import lombok.extern.log4j.Log4j;
+import com.simplecoding.simplemapper.faq.vo.Faq;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,10 +43,10 @@ public class FaqController {
 	}
 
 	@PostMapping("/faq/add")
-	public String insert(@ModelAttribute FaqVO faqVO) {
+	public String insert(@ModelAttribute Faq faq) {
 		
-		log.info("테스트 " + faqVO);
-		faqService.insert(faqVO);
+		log.info("테스트 " + faq);
+		faqService.insert(faq);
 		
 		return "redirect:/faq";
 	}
@@ -55,23 +54,23 @@ public class FaqController {
 	@GetMapping("/faq/edition")
 	public String updateFaqView(@RequestParam int fno, Model model) 
 			      {
-		FaqVO faqVO = faqService.selectFaq(fno);
-		model.addAttribute("faqVO", faqVO);
+		Faq faq = faqService.selectFaq(fno);
+		model.addAttribute("faq", faq);
 		return "faq/update_faq";
 	}
 	
 	@PostMapping("/faq/edit")
 	public String update(@RequestParam int fno,
-							@ModelAttribute FaqVO faqVO
+							@ModelAttribute Faq faq
 			) {
-		faqService.update(faqVO);
+		faqService.update(faq);
 		return "redirect:/faq"; 
 	}
 	
 	@PostMapping("/faq/delete")
-	public String delete(@ModelAttribute FaqVO faqVO)
+	public String delete(@ModelAttribute Faq faq)
 	{
-        faqService.delete(faqVO);
+        faqService.delete(faq);
 		return "redirect:/faq"; 
 	}
 }

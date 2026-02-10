@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class DeptVO extends Criteria {
+public class Dept extends Criteria {
 	private int dno;           // 부서번호(기본키)
 	private String dname;      // 부서명
 	private String loc;        // 부서위치

@@ -4,7 +4,7 @@
 <mapper namespace="com.simplecoding.simplemapper.emp.mapper.EmpMapper">
     <select id="selectEmpList" 
             parameterType="Criteria"
-            resultType="EmpVO"
+            resultType="Emp"
     >
        SELECT * FROM TB_EMP
 		WHERE ENAME LIKE '%'|| #{searchKeyword} ||'%'
@@ -20,7 +20,7 @@
 		WHERE ENAME LIKE '%' || #{searchKeyword}  || '%'
 	</select>
 	
-	<insert id="insert" parameterType="EmpVO">
+	<insert id="insert" parameterType="Emp">
 		INSERT INTO TB_EMP(
 				ENO
 				, ENAME
@@ -44,7 +44,7 @@
 				,SYSDATE)
 	</insert>
 	
-	<select id="selectEmp" parameterType="int" resultType="EmpVO">
+	<select id="selectEmp" parameterType="int" resultType="Emp">
 		SELECT ENO
 		      ,ENAME
 		      ,JOB
@@ -57,7 +57,7 @@
 		WHERE ENO = #{eno}
 	</select>
 	
-	<update id="update" parameterType="EmpVO">
+	<update id="update" parameterType="Emp">
 		UPDATE TB_EMP
 		  SET ENAME = #{ename}
 		     ,JOB = #{job}
@@ -70,7 +70,7 @@
 		WHERE ENO = #{eno}
 	</update>
 	
-	<delete id="delete" parameterType="EmpVO">
+	<delete id="delete" parameterType="Emp">
 		DELETE TB_EMP 
 		WHERE ENO = #{eno}
 	</delete>

@@ -6,7 +6,7 @@ package com.simplecoding.simplemapper.fileDb.controller;
 import com.simplecoding.simplemapper.common.CommonUtil;
 import com.simplecoding.simplemapper.common.Criteria;
 import com.simplecoding.simplemapper.fileDb.service.FileDbService;
-import com.simplecoding.simplemapper.fileDb.vo.FileDbVO;
+import com.simplecoding.simplemapper.fileDb.vo.FileDb;
 import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,11 +53,11 @@ public class FileDbController {
 	}
 	
 	@PostMapping("/fileDb/add")
-	public String insert(        @Valid @ModelAttribute FileDbVO fileDbVO,
+	public String insert(        @Valid @ModelAttribute FileDb fileDb,
                                  BindingResult result
 			) throws Exception {
         commonUtil.checkBindingResult(result);
-		fileDbService.insert(fileDbVO);
+		fileDbService.insert(fileDb);
 		return "redirect:/fileDb"; 
 	}
 

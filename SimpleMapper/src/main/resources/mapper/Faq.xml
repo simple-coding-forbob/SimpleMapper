@@ -4,7 +4,7 @@
 <mapper namespace="com.simplecoding.simplemapper.faq.mapper.FaqMapper">
 	<select id="selectFaqList" 
 	        parameterType="Criteria" 
-	        resultType="FaqVO">
+	        resultType="Faq">
 		SELECT * FROM TB_FAQ
 		WHERE TITLE LIKE '%'|| #{searchKeyword} ||'%'
 		OFFSET #{offset} ROWS
@@ -19,7 +19,7 @@
 		WHERE TITLE LIKE '%' || #{searchKeyword} || '%'
 	</select>
 	
-	<insert id="insert" parameterType="FaqVO">
+	<insert id="insert" parameterType="Faq">
 		INSERT INTO TB_FAQ(
         FNO
         ,TITLE
@@ -35,13 +35,13 @@
 	
 	<select id="selectFaq" 
 	        parameterType="int"
-	        resultType="FaqVO"
+	        resultType="Faq"
 	>
 		SELECT * FROM TB_FAQ
 		WHERE FNO = #{fno}
 	</select>
 	
-	<update id="update" parameterType="FaqVO">
+	<update id="update" parameterType="Faq">
 		UPDATE TB_FAQ 
 		  SET TITLE = #{title}
 		     ,CONTENT   = #{content}
@@ -49,7 +49,7 @@
 		WHERE FNO = #{fno}
 	</update>
 	
-	<delete id="delete" parameterType="FaqVO">
+	<delete id="delete" parameterType="Faq">
 		DELETE TB_FAQ 
 		WHERE FNO = #{fno}
 	</delete>

@@ -1,7 +1,6 @@
 package com.simplecoding.simplemapper.fileDb.service;
 
 import com.simplecoding.simplemapper.common.Criteria;
-import com.simplecoding.simplemapper.fileDb.vo.FileDbVO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

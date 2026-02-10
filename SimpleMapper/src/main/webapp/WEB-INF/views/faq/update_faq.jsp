@@ -19,14 +19,14 @@
     <h1 class="text-2xl font-bold mb-6">faq 상세조회</h1>
     <form id="addForm" name="addForm" method="post">
 
-        <input type="hidden" id="fno" name="fno" value="<c:out value="${faqVO.fno}"/>" />
+        <input type="hidden" id="fno" name="fno" value="<c:out value="${faq.fno}"/>" />
         <div class="mb-4">
             <label for="title" class="block mb-1">title</label>
             <input type="text"
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="title"
                    name="title"
-                   value="<c:out value="${faqVO.title}"/>"
+                   value="<c:out value="${faq.title}"/>"
                    placeholder="제목">
         </div>
         <div class="mb-4">
@@ -35,7 +35,7 @@
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="content"
                    name="content"
-                   value="<c:out value="${faqVO.content}"/>"
+                   value="<c:out value="${faq.content}"/>"
                    placeholder="내용">
         </div>
         <div class="mb-4 flex gap-2">

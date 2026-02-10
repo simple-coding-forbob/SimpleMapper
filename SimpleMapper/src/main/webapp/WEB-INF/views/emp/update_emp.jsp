@@ -19,14 +19,14 @@
     <h1 class="text-2xl font-bold mb-6">사원 상세조회</h1>
     <form id="addForm" name="addForm" method="post">
 
-        <input type="hidden" id="eno" name="eno" value="<c:out value="${empVO.eno}"/>"/>
+        <input type="hidden" id="eno" name="eno" value="<c:out value="${emp.eno}"/>"/>
         <div class="mb-4">
             <label for="ename" class="block mb-1">ename</label>
             <input type="text"
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="ename"
                    name="ename"
-                   value="<c:out value="${empVO.ename}"/>"
+                   value="<c:out value="${emp.ename}"/>"
                    placeholder="사원명">
         </div>
         <div class="mb-4">
@@ -35,7 +35,7 @@
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="job"
                    name="job"
-                   value="<c:out value="${empVO.job}"/>"
+                   value="<c:out value="${emp.job}"/>"
                    placeholder="직위">
         </div>
         <div class="mb-4">
@@ -44,7 +44,7 @@
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="manager"
                    name="manager"
-                   value="<c:out value="${empVO.manager}"/>"
+                   value="<c:out value="${emp.manager}"/>"
                    placeholder="관리자사원번호">
         </div>
         <div class="mb-4">
@@ -53,7 +53,7 @@
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="hiredate"
                    name="hiredate"
-                   value="<c:out value="${empVO.hiredate}"/>"
+                   value="<c:out value="${emp.hiredate}"/>"
                    placeholder="입사일">
         </div>
         <div class="mb-4">
@@ -62,7 +62,7 @@
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="salary"
                    name="salary"
-                   value="<c:out value="${empVO.salary}"/>"
+                   value="<c:out value="${emp.salary}"/>"
                    placeholder="급여">
         </div>
         <div class="mb-4">
@@ -71,7 +71,7 @@
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="commission"
                    name="commission"
-                   value="<c:out value="${empVO.commission}"/>"
+                   value="<c:out value="${emp.commission}"/>"
                    placeholder="상여금">
         </div>
         <div class="mb-4">
@@ -80,7 +80,7 @@
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="dno"
                    name="dno"
-                   value="<c:out value="${empVO.dno}"/>"
+                   value="<c:out value="${emp.dno}"/>"
                    placeholder="부서번호">
         </div>
         <div class="mb-4 flex gap-2">

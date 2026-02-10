@@ -1,15 +1,13 @@
 package com.simplecoding.simplemapper.dept.service;
 
 import com.simplecoding.simplemapper.common.Criteria;
-import com.simplecoding.simplemapper.dept.vo.DeptVO;
+import com.simplecoding.simplemapper.dept.vo.Dept;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Log4j2
@@ -40,32 +38,32 @@ class DeptServiceTest {
 
     @Test
     void insert() {
-        DeptVO deptVO = new DeptVO();
-        deptVO.setDname("개발");
-        deptVO.setLoc("부산");
-        deptService.insert(deptVO);
+        Dept dept = new Dept();
+        dept.setDname("개발");
+        dept.setLoc("부산");
+        deptService.insert(dept);
     }
 
     @Test
     void selectDept() {
 
-        DeptVO deptVO = deptService.selectDept(10);
-        log.info(deptVO);
+        Dept dept = deptService.selectDept(10);
+        log.info(dept);
     }
 
     @Test
     void update() {
-        DeptVO deptVO = new DeptVO();
-        deptVO.setDno(10);
-        deptVO.setDname("개발");
-        deptVO.setLoc("부산");
-        deptService.update(deptVO);
+        Dept dept = new Dept();
+        dept.setDno(10);
+        dept.setDname("개발");
+        dept.setLoc("부산");
+        deptService.update(dept);
     }
 
     @Test
     void delete() {
-        DeptVO deptVO = new DeptVO();
-        deptVO.setDno(10);
-        deptService.delete(deptVO);        
+        Dept dept = new Dept();
+        dept.setDno(10);
+        deptService.delete(dept);
     }
 }

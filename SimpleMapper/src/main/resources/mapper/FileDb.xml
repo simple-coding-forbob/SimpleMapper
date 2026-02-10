@@ -3,7 +3,7 @@
 <mapper namespace="com.simplecoding.simplemapper.fileDb.mapper.FileDbMapper">
 	<select id="selectFileDbList"
 	        parameterType="Criteria"
-	        resultType="FileDbVO"
+	        resultType="FileDb"
 	>
 	   SELECT * FROM TB_FILE_DB
 	   WHERE FILE_TITLE LIKE '%' || #{searchKeyword}  || '%'
@@ -19,7 +19,7 @@
 		WHERE file_title LIKE '%'|| #{searchKeyword} ||'%'
 	</select>
 	
-	<insert id="insert" parameterType="FileDbVO">
+	<insert id="insert" parameterType="FileDb">
 		INSERT INTO TB_FILE_DB(UUID, 
 		                       FILE_TITLE, 
 		                       FILE_CONTENT,

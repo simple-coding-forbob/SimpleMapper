@@ -6,7 +6,7 @@ package com.simplecoding.simplemapper.gallery.controller;
 import com.simplecoding.simplemapper.common.CommonUtil;
 import com.simplecoding.simplemapper.common.Criteria;
 import com.simplecoding.simplemapper.gallery.service.GalleryService;
-import com.simplecoding.simplemapper.gallery.vo.GalleryVO;
+import com.simplecoding.simplemapper.gallery.vo.Gallery;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ContentDisposition;
@@ -50,11 +50,11 @@ public class GalleryController {
 	}
 	
 	@PostMapping("/gallery/add")
-	public String insert(       @Valid @ModelAttribute GalleryVO galleryVO,
+	public String insert(       @Valid @ModelAttribute Gallery gallery,
                                 BindingResult result
 			) throws Exception {
         commonUtil.checkBindingResult(result);
-		galleryService.insert(galleryVO);
+		galleryService.insert(gallery);
 		return "redirect:/gallery"; 
 	}
 	

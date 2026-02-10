@@ -3,7 +3,7 @@ package com.simplecoding.simplemapper.dept.controller;
 
 import com.simplecoding.simplemapper.common.Criteria;
 import com.simplecoding.simplemapper.dept.service.DeptService;
-import com.simplecoding.simplemapper.dept.vo.DeptVO;
+import com.simplecoding.simplemapper.dept.vo.Dept;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,10 +48,10 @@ public class DeptController {
 	}
 
 	@PostMapping("/dept/add")
-	public String insert(@ModelAttribute DeptVO deptVO) {
+	public String insert(@ModelAttribute Dept dept) {
 		
-		log.info("테스트 " + deptVO);
-		deptService.insert(deptVO);
+		log.info("테스트 " + dept);
+		deptService.insert(dept);
 		
 		return "redirect:/dept";
 	}
@@ -59,23 +59,23 @@ public class DeptController {
 	@GetMapping("/dept/edition")
 	public String updateDeptView(@RequestParam int dno, Model model) 
 			      {
-		DeptVO deptVO = deptService.selectDept(dno);
-		model.addAttribute("deptVO", deptVO);
+		Dept dept = deptService.selectDept(dno);
+		model.addAttribute("dept", dept);
 		return "dept/update_dept";
 	}
 	
 	@PostMapping("/dept/edit")
 	public String update(@RequestParam int dno,
-							@ModelAttribute DeptVO deptVO
+							@ModelAttribute Dept dept
 			) {
-		deptService.update(deptVO);
+		deptService.update(dept);
 		return "redirect:/dept";
 	}
 	
 	@PostMapping("/dept/delete")
-	public String delete(@ModelAttribute DeptVO deptVO)
+	public String delete(@ModelAttribute Dept dept)
 	{
-        deptService.delete(deptVO);
+        deptService.delete(dept);
 		return "redirect:/dept";
 	}
 }

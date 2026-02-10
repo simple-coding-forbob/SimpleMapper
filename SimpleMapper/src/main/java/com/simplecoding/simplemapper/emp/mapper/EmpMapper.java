@@ -4,7 +4,7 @@
 package com.simplecoding.simplemapper.emp.mapper;
 
 import com.simplecoding.simplemapper.common.Criteria;
-import com.simplecoding.simplemapper.emp.vo.EmpVO;
+import com.simplecoding.simplemapper.emp.vo.Emp;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,10 +14,10 @@ import java.util.List;
 public interface EmpMapper {
 	List<?> selectEmpList(Criteria searchVO);   // 전체 조회
 	int selectEmpListTotCnt(Criteria searchVO); // 개수 세기
-	int insert(EmpVO empVO);                    // insert 함수
-	EmpVO selectEmp(int eno);                   // 상세조회 함수
-	int update(EmpVO empVO);                    // update 함수
-	int delete(EmpVO empVO);                    // delete 함수
+	int insert(Emp emp);                    // insert 함수
+	Emp selectEmp(int eno);                   // 상세조회 함수
+	int update(Emp emp);                    // update 함수
+	int delete(Emp emp);                    // delete 함수
 }
 
 

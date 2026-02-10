@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class GalleryVO extends Criteria {
+public class Gallery extends Criteria {
 	private String uuid;           // 기본키
 	private String galleryTitle;   // 제목
 	private MultipartFile fileData;   // 내부적 사용(이미지)

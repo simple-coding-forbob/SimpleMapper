@@ -3,7 +3,7 @@ package com.simplecoding.simplemapper.emp.controller;
 
 import com.simplecoding.simplemapper.common.Criteria;
 import com.simplecoding.simplemapper.emp.service.EmpService;
-import com.simplecoding.simplemapper.emp.vo.EmpVO;
+import com.simplecoding.simplemapper.emp.vo.Emp;
 import lombok.extern.log4j.Log4j2;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +44,8 @@ public class EmpController {
 	}
 	
 	@PostMapping("/emp/add")
-	public String insert(@ModelAttribute EmpVO empVO) {
-		empService.insert(empVO);
+	public String insert(@ModelAttribute Emp emp) {
+		empService.insert(emp);
 		
 		return "redirect:/emp";
 	}
@@ -53,23 +53,23 @@ public class EmpController {
 
 	@GetMapping("/emp/edition")
 	public String updateEmpView(@RequestParam int eno, Model model) {
-		EmpVO empVO = empService.selectEmp(eno);
-		model.addAttribute("empVO", empVO);
-		log.info(empVO);
+		Emp emp = empService.selectEmp(eno);
+		model.addAttribute("emp", emp);
+		log.info(emp);
 		return "emp/update_emp";
 	}
 	
 	@PostMapping("/emp/edit")
 	public String update(@RequestParam int eno,
-							@ModelAttribute EmpVO empVO
+							@ModelAttribute Emp emp
 			) {
-		empService.update(empVO);
+		empService.update(emp);
 		return "redirect:/emp"; 
 	}
 	
 	@PostMapping("/emp/delete")
-	public String delete(@ModelAttribute EmpVO empVO) {
-        empService.delete(empVO);
+	public String delete(@ModelAttribute Emp emp) {
+        empService.delete(emp);
 		return "redirect:/emp"; 
 	}
 }

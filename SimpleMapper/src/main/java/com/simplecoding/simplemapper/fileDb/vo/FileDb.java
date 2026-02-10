@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class FileDbVO extends Criteria {
+public class FileDb extends Criteria {
 	private String uuid;            // 기본키
     @NotBlank
 	private String fileTitle;       // 제목

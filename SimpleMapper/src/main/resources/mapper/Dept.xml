@@ -4,7 +4,7 @@
 <mapper namespace="com.simplecoding.simplemapper.dept.mapper.DeptMapper">
     <select id="selectDeptList" 
 	        parameterType="Criteria" 
-	        resultType="DeptVO">
+	        resultType="Dept">
 		SELECT * FROM TB_DEPT
 		WHERE DNAME LIKE '%'|| #{searchKeyword} ||'%'
 		OFFSET #{offset} ROWS
@@ -13,7 +13,7 @@
 	
 <!--     <select id="selectDeptList" 
 	        parameterType="Criteria" 
-	        resultType="DeptVO">
+	        resultType="Dept">
 		SELECT * FROM TB_DEPT
 		<if test="searchKeyword != ''">
 			WHERE DNAME LIKE '%'|| #{searchKeyword} ||'%'
@@ -30,7 +30,7 @@
 		WHERE DNAME LIKE '%' || #{searchKeyword} || '%'
 	</select>
 	
-	<insert id="insert" parameterType="DeptVO">
+	<insert id="insert" parameterType="Dept">
 		INSERT INTO TB_DEPT(
         DNO
         ,DNAME
@@ -46,13 +46,13 @@
 	
 	<select id="selectDept" 
 	        parameterType="int"
-	        resultType="DeptVO"
+	        resultType="Dept"
 	>
 		SELECT * FROM TB_DEPT
 		WHERE DNO = #{dno}
 	</select>
 	
-	<update id="update" parameterType="DeptVO">
+	<update id="update" parameterType="Dept">
 		UPDATE TB_DEPT 
 		  SET DNAME = #{dname}
 		     ,LOC   = #{loc}
@@ -60,7 +60,7 @@
 		WHERE DNO = #{dno}
 	</update>
 	
-	<delete id="delete" parameterType="DeptVO">
+	<delete id="delete" parameterType="Dept">
 		DELETE TB_DEPT 
 		WHERE DNO = #{dno}
 	</delete>

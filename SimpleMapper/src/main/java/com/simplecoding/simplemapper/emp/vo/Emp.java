@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class EmpVO extends Criteria {
+public class Emp extends Criteria {
 	private int eno;            // 사원번호(기본키)
 	private String ename;       // 사원명
 	private String job;         // 직위
