@@ -2,6 +2,9 @@
 ## Gallery 게시판 주소: http://localhost:8080/gallery
 ## 스프링 코딩 순서: 1) vo 2) mapper 3) xml 4) service 5) controller 6) jsp
 ## Gallery 테이블: TB_GALLERY
+    UUID	         VARCHAR2(1000 BYTE)
+    GALLERY_TITLE	 VARCHAR2(1000 BYTE)
+    GALLERY_FILE_URL VARCHAR2(1000 BYTE)
 
 # 기능별 코딩 순서
 ## 1. Gallery 전체 조회

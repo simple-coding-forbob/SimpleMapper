@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.simplecoding.simplemapper.qna.mapper.QnaMapper">
+    <select id="selectQnaList"
+            parameterType="Criteria"
+            resultType="Qna">
+        SELECT * FROM TB_QNA
+        WHERE QUESTION LIKE '%'|| #{searchKeyword} ||'%'
+        OFFSET #{offset} ROWS
+        FETCH NEXT #{size} ROWS ONLY
+    </select>
+
+    <select id="selectQnaListTotCnt"
+            parameterType="Criteria"
+            resultType="int"
+    >
+        SELECT COUNT(*) FROM TB_QNA
+        WHERE QUESTION LIKE '%' || #{searchKeyword} || '%'
+    </select>
+
+    <insert id="insert" parameterType="Qna">
+        INSERT INTO TB_QNA(
+                            QNO
+                          ,QUESTIONER
+                          ,QUESTION
+                          ,ANSWER
+                          ,ANSWERER
+                          ,INSERT_TIME
+        )
+        VALUES(
+                SQ_FAQ.NEXTVAL
+              , #{questioner}
+              , #{question}
+              , #{answer}
+              , #{answerer}
+              ,SYSDATE)
+    </insert>
+
+    <select id="selectQna"
+            parameterType="int"
+            resultType="Qna"
+    >
+        SELECT * FROM TB_QNA
+        WHERE QNO = #{qno}
+    </select>
+
+    <update id="update" parameterType="Qna">
+        UPDATE TB_QNA
+        SET QUESTIONER = #{questioner}
+          ,QUESTION   = #{question}
+          ,ANSWER = #{answer}
+          ,ANSWERER   = #{answerer}
+          ,UPDATE_TIME = SYSDATE
+        WHERE QNO = #{qno}
+    </update>
+
+    <delete id="delete" parameterType="Qna">
+        DELETE TB_QNA
+		WHERE QNO = #{qno}
+    </delete>
+</mapper>
+
+
+
+
+
+
+
+

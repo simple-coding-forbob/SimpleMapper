@@ -2,6 +2,15 @@
 ## 사원 게시판 주소: http://localhost:8080/emp
 ## 스프링 코딩 순서: 1) vo 2) mapper 3) xml 4) service 5) controller 6) jsp
 ## 사원 테이블: TB_EMP
+### 컬럼:
+    ENO	        NUMBER
+    ENAME	    VARCHAR2(255 BYTE)
+    JOB	        VARCHAR2(255 BYTE)
+    MANAGER	    NUMBER
+    HIREDATE	DATE
+    SALARY	    NUMBER
+    COMMISSION	NUMBER
+    DNO	        NUMBER
 
 # 기능별 코딩 순서
 ## 1. 사원 전체 조회

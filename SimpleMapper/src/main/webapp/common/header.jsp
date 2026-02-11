@@ -50,6 +50,16 @@
             </li>
             <li class="group md:relative">
                 <a class="hover:underline" href="#">
+                    qna
+                </a>
+                <ul class="md:absolute md:top-full md:left-0 md:opacity-0 md:invisible md:group-hover:opacity-100
+            md:group-hover:visible md:transition-all md:bg-white md:text-black md:w-42 md:p-2 md:rounded">
+                    <li class="m-2"><a class="hover:underline" href="/qna">qna조회(마무리퀴즈)</a></li>
+                    <li class="m-2"><a class="hover:underline" href="/qna/addition">qna추가(마무리퀴즈)</a></li>
+                </ul>
+            </li>
+            <li class="group md:relative">
+                <a class="hover:underline" href="#">
                     fileDb
                 </a>
                 <ul class="md:absolute md:top-full md:left-0 md:opacity-0 md:invisible md:group-hover:opacity-100

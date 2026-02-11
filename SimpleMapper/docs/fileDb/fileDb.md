@@ -2,6 +2,11 @@
 ## FileDb 게시판 주소: http://localhost:8080/fileDb
 ## 스프링 코딩 순서: 1) vo 2) mapper 3) xml 4) service 5) controller 6) jsp
 ## FileDb 테이블: TB_FILE_DB
+### 컬럼:
+    UUID	     VARCHAR2(1000 BYTE)
+    FILE_TITLE	 VARCHAR2(1000 BYTE)
+    FILE_CONTENT VARCHAR2(1000 BYTE)
+    FILE_URL	 VARCHAR2(1000 BYTE)
 
 # 기능별 코딩 순서
 ## 1. FileDb 전체 조회

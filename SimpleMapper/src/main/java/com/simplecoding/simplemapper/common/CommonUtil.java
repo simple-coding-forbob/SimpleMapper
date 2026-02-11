@@ -53,9 +53,30 @@ public class CommonUtil {
         file.transferTo(uuidPath);
     }
 
+    // 서버에 파일 저장
+    public void saveFile(MultipartFile file, String  uuid, String folder) throws Exception {
+        Path folderPath = Paths.get(uploadDir + folder); // uploadDir
+        if (!Files.exists(folderPath)) {
+            throw new RuntimeException(getMessage("errors.path.not.found"));
+        }
+        // 파일 저장
+        Path uuidPath = folderPath.resolve(uuid);   // uploadDir/uuid
+        file.transferTo(uuidPath);
+    }
+
     // 서버에 저장된 파일 삭제
     public void deleteFile(String uuid) {
         Path uuidPath = Paths.get(uploadDir).resolve(uuid);
+        try {
+            Files.deleteIfExists(uuidPath);          // 있을때만 삭제
+        } catch (IOException e) {
+            throw new RuntimeException(getMessage("errors.file.delete.fail"), e);
+        }
+    }
+
+    // 서버에 저장된 파일 삭제
+    public void deleteFile(String uuid, String folder) {
+        Path uuidPath = Paths.get(uploadDir + folder).resolve(uuid);
         try {
             Files.deleteIfExists(uuidPath);          // 있을때만 삭제
         } catch (IOException e) {
