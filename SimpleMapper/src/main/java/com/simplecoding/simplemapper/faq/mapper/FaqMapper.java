@@ -24,3 +24,14 @@ public interface FaqMapper {
 	int update(Faq faq);                   // update 함수
 	int delete(Faq faq);                   // delete 함수
 }
+
+
+
+
+
+
+
+
+
+
+
